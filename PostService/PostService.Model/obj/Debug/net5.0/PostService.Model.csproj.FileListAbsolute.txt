@@ -1,0 +1,12 @@
+C:\Users\nikol\Desktop\PostService\PostService.Model\bin\Debug\net5.0\PostService.Model.deps.json
+C:\Users\nikol\Desktop\PostService\PostService.Model\bin\Debug\net5.0\PostService.Model.dll
+C:\Users\nikol\Desktop\PostService\PostService.Model\bin\Debug\net5.0\ref\PostService.Model.dll
+C:\Users\nikol\Desktop\PostService\PostService.Model\bin\Debug\net5.0\PostService.Model.pdb
+C:\Users\nikol\Desktop\PostService\PostService.Model\obj\Debug\net5.0\PostService.Model.csproj.AssemblyReference.cache
+C:\Users\nikol\Desktop\PostService\PostService.Model\obj\Debug\net5.0\PostService.Model.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\nikol\Desktop\PostService\PostService.Model\obj\Debug\net5.0\PostService.Model.AssemblyInfoInputs.cache
+C:\Users\nikol\Desktop\PostService\PostService.Model\obj\Debug\net5.0\PostService.Model.AssemblyInfo.cs
+C:\Users\nikol\Desktop\PostService\PostService.Model\obj\Debug\net5.0\PostService.Model.csproj.CoreCompileInputs.cache
+C:\Users\nikol\Desktop\PostService\PostService.Model\obj\Debug\net5.0\PostService.Model.dll
+C:\Users\nikol\Desktop\PostService\PostService.Model\obj\Debug\net5.0\ref\PostService.Model.dll
+C:\Users\nikol\Desktop\PostService\PostService.Model\obj\Debug\net5.0\PostService.Model.pdb
