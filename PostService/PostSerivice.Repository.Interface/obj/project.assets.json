@@ -1,0 +1,90 @@
+{
+  "version": 3,
+  "targets": {
+    "net5.0": {
+      "PostService.Model/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v5.0",
+        "compile": {
+          "bin/placeholder/PostService.Model.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/PostService.Model.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "PostService.Model/1.0.0": {
+      "type": "project",
+      "path": "../PostService.Model/PostService.Model.csproj",
+      "msbuildProject": "../PostService.Model/PostService.Model.csproj"
+    }
+  },
+  "projectFileDependencyGroups": {
+    "net5.0": [
+      "PostService.Model >= 1.0.0"
+    ]
+  },
+  "packageFolders": {
+    "C:\\Users\\nikol\\.nuget\\packages\\": {}
+  },
+  "project": {
+    "version": "1.0.0",
+    "restore": {
+      "projectUniqueName": "C:\\Users\\nikol\\Desktop\\Post\\PostService\\PostService\\PostSerivice.Repository.Interface\\PostService.Repository.Interface.csproj",
+      "projectName": "PostService.Repository.Interface",
+      "projectPath": "C:\\Users\\nikol\\Desktop\\Post\\PostService\\PostService\\PostSerivice.Repository.Interface\\PostService.Repository.Interface.csproj",
+      "packagesPath": "C:\\Users\\nikol\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\nikol\\Desktop\\Post\\PostService\\PostService\\PostSerivice.Repository.Interface\\obj\\",
+      "projectStyle": "PackageReference",
+      "configFilePaths": [
+        "C:\\Users\\nikol\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+      ],
+      "originalTargetFrameworks": [
+        "net5.0"
+      ],
+      "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "https://api.nuget.org/v3/index.json": {}
+      },
+      "frameworks": {
+        "net5.0": {
+          "targetAlias": "net5.0",
+          "projectReferences": {
+            "C:\\Users\\nikol\\Desktop\\Post\\PostService\\PostService\\PostService.Model\\PostService.Model.csproj": {
+              "projectPath": "C:\\Users\\nikol\\Desktop\\Post\\PostService\\PostService\\PostService.Model\\PostService.Model.csproj"
+            }
+          }
+        }
+      },
+      "warningProperties": {
+        "warnAsError": [
+          "NU1605"
+        ]
+      }
+    },
+    "frameworks": {
+      "net5.0": {
+        "targetAlias": "net5.0",
+        "imports": [
+          "net461",
+          "net462",
+          "net47",
+          "net471",
+          "net472",
+          "net48"
+        ],
+        "assetTargetFallback": true,
+        "warn": true,
+        "frameworkReferences": {
+          "Microsoft.NETCore.App": {
+            "privateAssets": "all"
+          }
+        },
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.408\\RuntimeIdentifierGraph.json"
+      }
+    }
+  }
+}

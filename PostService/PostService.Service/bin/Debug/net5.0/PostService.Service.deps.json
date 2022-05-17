@@ -1,0 +1,62 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v5.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v5.0": {
+      "PostService.Service/1.0.0": {
+        "dependencies": {
+          "PostService.Service.Interface": "1.0.0"
+        },
+        "runtime": {
+          "PostService.Service.dll": {}
+        }
+      },
+      "PostService.Model/1.0.0": {
+        "runtime": {
+          "PostService.Model.dll": {}
+        }
+      },
+      "PostService.Repository.Interface/1.0.0": {
+        "dependencies": {
+          "PostService.Model": "1.0.0"
+        },
+        "runtime": {
+          "PostService.Repository.Interface.dll": {}
+        }
+      },
+      "PostService.Service.Interface/1.0.0": {
+        "dependencies": {
+          "PostService.Repository.Interface": "1.0.0"
+        },
+        "runtime": {
+          "PostService.Service.Interface.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "PostService.Service/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "PostService.Model/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "PostService.Repository.Interface/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "PostService.Service.Interface/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}
