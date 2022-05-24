@@ -15,9 +15,12 @@ jobs:
       uses: actions/setup-dotnet@v2
       with:
         dotnet-version: 5.0.x
-    - name: Restore dependencies
+    - name: Install Dependencies
+      working-directory: ./PostService
       run: dotnet restore
     - name: Build
+      working-directory: ./PostService
       run: dotnet build --no-restore
     - name: Test
+      working-directory: ./PostService
       run: dotnet test --no-build --verbosity normal
