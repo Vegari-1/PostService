@@ -1,32 +1,34 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\nikol\\Desktop\\Post\\PostService\\PostService\\PostService\\PostService.csproj": {}
+    "C:\\Users\\n.kabasaj\\Desktop\\Devops\\PostService\\PostService\\PostService\\PostService.csproj": {}
   },
   "projects": {
-    "C:\\Users\\nikol\\Desktop\\Post\\PostService\\PostService\\PostService\\PostService.csproj": {
+    "C:\\Users\\n.kabasaj\\Desktop\\Devops\\PostService\\PostService\\PostService\\PostService.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\nikol\\Desktop\\Post\\PostService\\PostService\\PostService\\PostService.csproj",
+        "projectUniqueName": "C:\\Users\\n.kabasaj\\Desktop\\Devops\\PostService\\PostService\\PostService\\PostService.csproj",
         "projectName": "PostService",
-        "projectPath": "C:\\Users\\nikol\\Desktop\\Post\\PostService\\PostService\\PostService\\PostService.csproj",
-        "packagesPath": "C:\\Users\\nikol\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\nikol\\Desktop\\Post\\PostService\\PostService\\PostService\\obj\\",
+        "projectPath": "C:\\Users\\n.kabasaj\\Desktop\\Devops\\PostService\\PostService\\PostService\\PostService.csproj",
+        "packagesPath": "C:\\Users\\n.kabasaj\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\n.kabasaj\\Desktop\\Devops\\PostService\\PostService\\PostService\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
         "configFilePaths": [
-          "C:\\Users\\nikol\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\n.kabasaj\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
-          "net5.0"
+          "net50"
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
-          "net5.0": {
-            "targetAlias": "net5.0",
+          "net50": {
             "projectReferences": {}
           }
         },
@@ -37,8 +39,7 @@
         }
       },
       "frameworks": {
-        "net5.0": {
-          "targetAlias": "net5.0",
+        "net50": {
           "dependencies": {
             "Microsoft.EntityFrameworkCore.Tools": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
@@ -54,26 +55,12 @@
               "target": "Package",
               "version": "[5.0.0, )"
             }
-          },
-          "imports": [
-            "net461",
-            "net462",
-            "net47",
-            "net471",
-            "net472",
-            "net48"
-          ],
-          "assetTargetFallback": true,
-          "warn": true,
-          "frameworkReferences": {
-            "Microsoft.AspNetCore.App": {
-              "privateAssets": "none"
-            },
-            "Microsoft.NETCore.App": {
-              "privateAssets": "all"
-            }
-          },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.408\\RuntimeIdentifierGraph.json"
+          }
+        }
+      },
+      "runtimes": {
+        "win7-x86": {
+          "#import": []
         }
       }
     }
