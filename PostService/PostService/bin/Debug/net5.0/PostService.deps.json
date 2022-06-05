@@ -33,8 +33,10 @@
     ".NETCoreApp,Version=v5.0": {
       "PostService/1.0.0": {
         "dependencies": {
+          "AutoMapper": "11.0.1",
           "Microsoft.EntityFrameworkCore.Tools": "5.0.0",
           "Npgsql.EntityFrameworkCore.PostgreSQL": "5.0.0",
+          "PostService.Service": "1.0.0",
           "Swashbuckle.AspNetCore": "5.0.0",
           "Microsoft.AspNetCore.Antiforgery": "5.0.0.0",
           "Microsoft.AspNetCore.Authentication.Abstractions": "5.0.0.0",
@@ -327,6 +329,20 @@
           "PostService.dll": {}
         }
       },
+      "AutoMapper/11.0.1": {
+        "dependencies": {
+          "Microsoft.CSharp": "4.7.0"
+        },
+        "runtime": {
+          "lib/netstandard2.1/AutoMapper.dll": {
+            "assemblyVersion": "11.0.0.0",
+            "fileVersion": "11.0.1.0"
+          }
+        },
+        "compile": {
+          "lib/netstandard2.1/AutoMapper.dll": {}
+        }
+      },
       "Humanizer.Core/2.8.26": {
         "runtime": {
           "lib/netstandard2.0/Humanizer.dll": {
@@ -549,6 +565,47 @@
         }
       },
       "System.Runtime.CompilerServices.Unsafe/4.6.0": {},
+      "PostService.Model/1.0.0": {
+        "runtime": {
+          "PostService.Model.dll": {}
+        },
+        "compile": {
+          "PostService.Model.dll": {}
+        }
+      },
+      "PostService.Repository.Interface/1.0.0": {
+        "dependencies": {
+          "PostService.Model": "1.0.0"
+        },
+        "runtime": {
+          "PostService.Repository.Interface.dll": {}
+        },
+        "compile": {
+          "PostService.Repository.Interface.dll": {}
+        }
+      },
+      "PostService.Service/1.0.0": {
+        "dependencies": {
+          "PostService.Service.Interface": "1.0.0"
+        },
+        "runtime": {
+          "PostService.Service.dll": {}
+        },
+        "compile": {
+          "PostService.Service.dll": {}
+        }
+      },
+      "PostService.Service.Interface/1.0.0": {
+        "dependencies": {
+          "PostService.Repository.Interface": "1.0.0"
+        },
+        "runtime": {
+          "PostService.Service.Interface.dll": {}
+        },
+        "compile": {
+          "PostService.Service.Interface.dll": {}
+        }
+      },
       "Microsoft.AspNetCore.Antiforgery/5.0.0.0": {
         "compile": {
           "Microsoft.AspNetCore.Antiforgery.dll": {}
@@ -2255,6 +2312,13 @@
       "serviceable": false,
       "sha512": ""
     },
+    "AutoMapper/11.0.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-WIadGC1pIwbnyTubvI577p3F++Bsj9q2Q3OaAc1I0QS+JhupN1xkdrPBhI9bPIeg63zM81tZplUNYkqU1HE5jQ==",
+      "path": "automapper/11.0.1",
+      "hashPath": "automapper.11.0.1.nupkg.sha512"
+    },
     "Humanizer.Core/2.8.26": {
       "type": "package",
       "serviceable": true,
@@ -2457,6 +2521,26 @@
       "sha512": "sha512-HxozeSlipUK7dAroTYwIcGwKDeOVpQnJlpVaOkBz7CM4TsE5b/tKlQBZecTjh6FzcSbxndYaxxpsBMz+wMJeyw==",
       "path": "system.runtime.compilerservices.unsafe/4.6.0",
       "hashPath": "system.runtime.compilerservices.unsafe.4.6.0.nupkg.sha512"
+    },
+    "PostService.Model/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "PostService.Repository.Interface/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "PostService.Service/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "PostService.Service.Interface/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
     },
     "Microsoft.AspNetCore.Antiforgery/5.0.0.0": {
       "type": "referenceassembly",

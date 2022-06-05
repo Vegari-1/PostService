@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "OFMwUmziKXDqEjEntSPNTSUZDSbUJkn+qMexVjBqi46YtJCYu5grh10m53DgiORxDvLZ/Q8xdwtxpxkVpSH32A==",
+  "dgSpecHash": "InmTX/WY0166zrvCVlC+szuQQbuTvh8Ban4hLYFFTOrqmO6PpQBH4Pf+KzmIdr4m3n1zHQbIU7kpH7qmQCLSGA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\nikol\\Desktop\\Post\\PostService\\PostService\\PostSerivice.Repository.Interface\\PostService.Repository.Interface.csproj",
+  "projectFilePath": "C:\\Users\\nikol\\Desktop\\DevOps\\PostService\\PostService\\PostSerivice.Repository.Interface\\PostService.Repository.Interface.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

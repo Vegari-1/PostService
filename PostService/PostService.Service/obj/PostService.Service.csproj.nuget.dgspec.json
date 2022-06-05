@@ -1,35 +1,35 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\nikol\\Desktop\\Post\\PostService\\PostService\\PostService.Service\\PostService.Service.csproj": {}
+    "C:\\Users\\nikol\\Desktop\\DevOps\\PostService\\PostService\\PostService.Service\\PostService.Service.csproj": {}
   },
   "projects": {
-    "C:\\Users\\nikol\\Desktop\\Post\\PostService\\PostService\\PostSerivice.Repository.Interface\\PostService.Repository.Interface.csproj": {
+    "C:\\Users\\nikol\\Desktop\\DevOps\\PostService\\PostService\\PostSerivice.Repository.Interface\\PostService.Repository.Interface.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\nikol\\Desktop\\Post\\PostService\\PostService\\PostSerivice.Repository.Interface\\PostService.Repository.Interface.csproj",
+        "projectUniqueName": "C:\\Users\\nikol\\Desktop\\DevOps\\PostService\\PostService\\PostSerivice.Repository.Interface\\PostService.Repository.Interface.csproj",
         "projectName": "PostService.Repository.Interface",
-        "projectPath": "C:\\Users\\nikol\\Desktop\\Post\\PostService\\PostService\\PostSerivice.Repository.Interface\\PostService.Repository.Interface.csproj",
+        "projectPath": "C:\\Users\\nikol\\Desktop\\DevOps\\PostService\\PostService\\PostSerivice.Repository.Interface\\PostService.Repository.Interface.csproj",
         "packagesPath": "C:\\Users\\nikol\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\nikol\\Desktop\\Post\\PostService\\PostService\\PostSerivice.Repository.Interface\\obj\\",
+        "outputPath": "C:\\Users\\nikol\\Desktop\\DevOps\\PostService\\PostService\\PostSerivice.Repository.Interface\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\nikol\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
-          "net5.0"
+          "net6.0"
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
-          "net5.0": {
-            "targetAlias": "net5.0",
+          "net6.0": {
+            "targetAlias": "net6.0",
             "projectReferences": {
-              "C:\\Users\\nikol\\Desktop\\Post\\PostService\\PostService\\PostService.Model\\PostService.Model.csproj": {
-                "projectPath": "C:\\Users\\nikol\\Desktop\\Post\\PostService\\PostService\\PostService.Model\\PostService.Model.csproj"
+              "C:\\Users\\nikol\\Desktop\\DevOps\\PostService\\PostService\\PostService.Model\\PostService.Model.csproj": {
+                "projectPath": "C:\\Users\\nikol\\Desktop\\DevOps\\PostService\\PostService\\PostService.Model\\PostService.Model.csproj"
               }
             }
           }
@@ -41,8 +41,8 @@
         }
       },
       "frameworks": {
-        "net5.0": {
-          "targetAlias": "net5.0",
+        "net6.0": {
+          "targetAlias": "net6.0",
           "imports": [
             "net461",
             "net462",
@@ -58,33 +58,33 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.408\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.300\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\nikol\\Desktop\\Post\\PostService\\PostService\\PostService.Model\\PostService.Model.csproj": {
+    "C:\\Users\\nikol\\Desktop\\DevOps\\PostService\\PostService\\PostService.Model\\PostService.Model.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\nikol\\Desktop\\Post\\PostService\\PostService\\PostService.Model\\PostService.Model.csproj",
+        "projectUniqueName": "C:\\Users\\nikol\\Desktop\\DevOps\\PostService\\PostService\\PostService.Model\\PostService.Model.csproj",
         "projectName": "PostService.Model",
-        "projectPath": "C:\\Users\\nikol\\Desktop\\Post\\PostService\\PostService\\PostService.Model\\PostService.Model.csproj",
+        "projectPath": "C:\\Users\\nikol\\Desktop\\DevOps\\PostService\\PostService\\PostService.Model\\PostService.Model.csproj",
         "packagesPath": "C:\\Users\\nikol\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\nikol\\Desktop\\Post\\PostService\\PostService\\PostService.Model\\obj\\",
+        "outputPath": "C:\\Users\\nikol\\Desktop\\DevOps\\PostService\\PostService\\PostService.Model\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\nikol\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
-          "net5.0"
+          "net6.0"
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
-          "net5.0": {
-            "targetAlias": "net5.0",
+          "net6.0": {
+            "targetAlias": "net6.0",
             "projectReferences": {}
           }
         },
@@ -95,8 +95,8 @@
         }
       },
       "frameworks": {
-        "net5.0": {
-          "targetAlias": "net5.0",
+        "net6.0": {
+          "targetAlias": "net6.0",
           "imports": [
             "net461",
             "net462",
@@ -112,36 +112,36 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.408\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.300\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\nikol\\Desktop\\Post\\PostService\\PostService\\PostService.Service.Interface\\PostService.Service.Interface.csproj": {
+    "C:\\Users\\nikol\\Desktop\\DevOps\\PostService\\PostService\\PostService.Service.Interface\\PostService.Service.Interface.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\nikol\\Desktop\\Post\\PostService\\PostService\\PostService.Service.Interface\\PostService.Service.Interface.csproj",
+        "projectUniqueName": "C:\\Users\\nikol\\Desktop\\DevOps\\PostService\\PostService\\PostService.Service.Interface\\PostService.Service.Interface.csproj",
         "projectName": "PostService.Service.Interface",
-        "projectPath": "C:\\Users\\nikol\\Desktop\\Post\\PostService\\PostService\\PostService.Service.Interface\\PostService.Service.Interface.csproj",
+        "projectPath": "C:\\Users\\nikol\\Desktop\\DevOps\\PostService\\PostService\\PostService.Service.Interface\\PostService.Service.Interface.csproj",
         "packagesPath": "C:\\Users\\nikol\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\nikol\\Desktop\\Post\\PostService\\PostService\\PostService.Service.Interface\\obj\\",
+        "outputPath": "C:\\Users\\nikol\\Desktop\\DevOps\\PostService\\PostService\\PostService.Service.Interface\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\nikol\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
-          "net5.0"
+          "net6.0"
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
-          "net5.0": {
-            "targetAlias": "net5.0",
+          "net6.0": {
+            "targetAlias": "net6.0",
             "projectReferences": {
-              "C:\\Users\\nikol\\Desktop\\Post\\PostService\\PostService\\PostSerivice.Repository.Interface\\PostService.Repository.Interface.csproj": {
-                "projectPath": "C:\\Users\\nikol\\Desktop\\Post\\PostService\\PostService\\PostSerivice.Repository.Interface\\PostService.Repository.Interface.csproj"
+              "C:\\Users\\nikol\\Desktop\\DevOps\\PostService\\PostService\\PostSerivice.Repository.Interface\\PostService.Repository.Interface.csproj": {
+                "projectPath": "C:\\Users\\nikol\\Desktop\\DevOps\\PostService\\PostService\\PostSerivice.Repository.Interface\\PostService.Repository.Interface.csproj"
               }
             }
           }
@@ -153,8 +153,8 @@
         }
       },
       "frameworks": {
-        "net5.0": {
-          "targetAlias": "net5.0",
+        "net6.0": {
+          "targetAlias": "net6.0",
           "imports": [
             "net461",
             "net462",
@@ -170,36 +170,36 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.408\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.300\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\nikol\\Desktop\\Post\\PostService\\PostService\\PostService.Service\\PostService.Service.csproj": {
+    "C:\\Users\\nikol\\Desktop\\DevOps\\PostService\\PostService\\PostService.Service\\PostService.Service.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\nikol\\Desktop\\Post\\PostService\\PostService\\PostService.Service\\PostService.Service.csproj",
+        "projectUniqueName": "C:\\Users\\nikol\\Desktop\\DevOps\\PostService\\PostService\\PostService.Service\\PostService.Service.csproj",
         "projectName": "PostService.Service",
-        "projectPath": "C:\\Users\\nikol\\Desktop\\Post\\PostService\\PostService\\PostService.Service\\PostService.Service.csproj",
+        "projectPath": "C:\\Users\\nikol\\Desktop\\DevOps\\PostService\\PostService\\PostService.Service\\PostService.Service.csproj",
         "packagesPath": "C:\\Users\\nikol\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\nikol\\Desktop\\Post\\PostService\\PostService\\PostService.Service\\obj\\",
+        "outputPath": "C:\\Users\\nikol\\Desktop\\DevOps\\PostService\\PostService\\PostService.Service\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\nikol\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
-          "net5.0"
+          "net6.0"
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
-          "net5.0": {
-            "targetAlias": "net5.0",
+          "net6.0": {
+            "targetAlias": "net6.0",
             "projectReferences": {
-              "C:\\Users\\nikol\\Desktop\\Post\\PostService\\PostService\\PostService.Service.Interface\\PostService.Service.Interface.csproj": {
-                "projectPath": "C:\\Users\\nikol\\Desktop\\Post\\PostService\\PostService\\PostService.Service.Interface\\PostService.Service.Interface.csproj"
+              "C:\\Users\\nikol\\Desktop\\DevOps\\PostService\\PostService\\PostService.Service.Interface\\PostService.Service.Interface.csproj": {
+                "projectPath": "C:\\Users\\nikol\\Desktop\\DevOps\\PostService\\PostService\\PostService.Service.Interface\\PostService.Service.Interface.csproj"
               }
             }
           }
@@ -211,8 +211,8 @@
         }
       },
       "frameworks": {
-        "net5.0": {
-          "targetAlias": "net5.0",
+        "net6.0": {
+          "targetAlias": "net6.0",
           "imports": [
             "net461",
             "net462",
@@ -228,7 +228,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.408\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.300\\RuntimeIdentifierGraph.json"
         }
       }
     }
