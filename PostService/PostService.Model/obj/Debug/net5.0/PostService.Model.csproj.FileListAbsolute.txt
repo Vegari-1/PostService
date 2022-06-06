@@ -10,3 +10,10 @@ C:\Users\nikol\Desktop\PostService\PostService.Model\obj\Debug\net5.0\PostServic
 C:\Users\nikol\Desktop\PostService\PostService.Model\obj\Debug\net5.0\PostService.Model.dll
 C:\Users\nikol\Desktop\PostService\PostService.Model\obj\Debug\net5.0\ref\PostService.Model.dll
 C:\Users\nikol\Desktop\PostService\PostService.Model\obj\Debug\net5.0\PostService.Model.pdb
+C:\Users\n.kabasaj\Desktop\Devops\PostService\PostService\PostService.Model\obj\Debug\net5.0\PostService.Model.csproj.AssemblyReference.cache
+C:\Users\n.kabasaj\Desktop\Devops\PostService\PostService\PostService.Model\obj\Debug\net5.0\PostService.Model.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\n.kabasaj\Desktop\Devops\PostService\PostService\PostService.Model\obj\Debug\net5.0\PostService.Model.AssemblyInfoInputs.cache
+C:\Users\n.kabasaj\Desktop\Devops\PostService\PostService\PostService.Model\obj\Debug\net5.0\PostService.Model.AssemblyInfo.cs
+C:\Users\n.kabasaj\Desktop\Devops\PostService\PostService\PostService.Model\obj\Debug\net5.0\PostService.Model.csproj.CoreCompileInputs.cache
+C:\Users\n.kabasaj\Desktop\Devops\PostService\PostService\PostService.Model\obj\Debug\net5.0\PostService.Model.dll
+C:\Users\n.kabasaj\Desktop\Devops\PostService\PostService\PostService.Model\obj\Debug\net5.0\PostService.Model.pdb

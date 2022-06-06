@@ -1,10 +1,10 @@
 {
   "version": 3,
   "targets": {
-    "net5.0": {
+    "net6.0": {
       "PostService.Model/1.0.0": {
         "type": "project",
-        "framework": ".NETCoreApp,Version=v5.0",
+        "framework": ".NETCoreApp,Version=v6.0",
         "compile": {
           "bin/placeholder/PostService.Model.dll": {}
         },
@@ -14,7 +14,7 @@
       },
       "PostService.Repository.Interface/1.0.0": {
         "type": "project",
-        "framework": ".NETCoreApp,Version=v5.0",
+        "framework": ".NETCoreApp,Version=v6.0",
         "dependencies": {
           "PostService.Model": "1.0.0"
         },
@@ -40,39 +40,43 @@
     }
   },
   "projectFileDependencyGroups": {
-    "net5.0": [
+    "net6.0": [
       "PostService.Repository.Interface >= 1.0.0"
     ]
   },
   "packageFolders": {
-    "C:\\Users\\nikol\\.nuget\\packages\\": {}
+    "C:\\Users\\n.kabasaj\\.nuget\\packages\\": {},
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\nikol\\Desktop\\Post\\PostService\\PostService\\PostService.Service.Interface\\PostService.Service.Interface.csproj",
+      "projectUniqueName": "C:\\Users\\n.kabasaj\\Desktop\\Devops\\PostService\\PostService\\PostService.Service.Interface\\PostService.Service.Interface.csproj",
       "projectName": "PostService.Service.Interface",
-      "projectPath": "C:\\Users\\nikol\\Desktop\\Post\\PostService\\PostService\\PostService.Service.Interface\\PostService.Service.Interface.csproj",
-      "packagesPath": "C:\\Users\\nikol\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\nikol\\Desktop\\Post\\PostService\\PostService\\PostService.Service.Interface\\obj\\",
+      "projectPath": "C:\\Users\\n.kabasaj\\Desktop\\Devops\\PostService\\PostService\\PostService.Service.Interface\\PostService.Service.Interface.csproj",
+      "packagesPath": "C:\\Users\\n.kabasaj\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\n.kabasaj\\Desktop\\Devops\\PostService\\PostService\\PostService.Service.Interface\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+      ],
       "configFilePaths": [
-        "C:\\Users\\nikol\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\n.kabasaj\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
-        "net5.0"
+        "net6.0"
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
-        "net5.0": {
-          "targetAlias": "net5.0",
+        "net6.0": {
+          "targetAlias": "net6.0",
           "projectReferences": {
-            "C:\\Users\\nikol\\Desktop\\Post\\PostService\\PostService\\PostSerivice.Repository.Interface\\PostService.Repository.Interface.csproj": {
-              "projectPath": "C:\\Users\\nikol\\Desktop\\Post\\PostService\\PostService\\PostSerivice.Repository.Interface\\PostService.Repository.Interface.csproj"
+            "C:\\Users\\n.kabasaj\\Desktop\\Devops\\PostService\\PostService\\PostSerivice.Repository.Interface\\PostService.Repository.Interface.csproj": {
+              "projectPath": "C:\\Users\\n.kabasaj\\Desktop\\Devops\\PostService\\PostService\\PostSerivice.Repository.Interface\\PostService.Repository.Interface.csproj"
             }
           }
         }
@@ -84,8 +88,8 @@
       }
     },
     "frameworks": {
-      "net5.0": {
-        "targetAlias": "net5.0",
+      "net6.0": {
+        "targetAlias": "net6.0",
         "imports": [
           "net461",
           "net462",
@@ -101,7 +105,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.408\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.300\\RuntimeIdentifierGraph.json"
       }
     }
   }
