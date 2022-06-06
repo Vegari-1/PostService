@@ -13,8 +13,11 @@
         "packagesPath": "C:\\Users\\nikol\\.nuget\\packages\\",
         "outputPath": "C:\\Users\\nikol\\Desktop\\DevOps\\PostService\\PostService\\PostSerivice.Repository.Interface\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
         "configFilePaths": [
-          "C:\\Users\\nikol\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\n.kabasaj\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
