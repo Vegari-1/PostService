@@ -18,3 +18,10 @@ C:\Users\nikol\Desktop\PostService\PostService.Repository\obj\Debug\net5.0\PostS
 C:\Users\nikol\Desktop\PostService\PostService.Repository\obj\Debug\net5.0\ref\PostService.Repository.dll
 C:\Users\nikol\Desktop\PostService\PostService.Repository\obj\Debug\net5.0\PostService.Repository.pdb
 C:\Users\nikol\Desktop\PostService\PostService.Repository\obj\Debug\net5.0\PostService.Repository.genruntimeconfig.cache
+C:\Users\n.kabasaj\Desktop\Devops\PostService\PostService\PostService.Repository\obj\Debug\net5.0\PostService.Repository.csproj.AssemblyReference.cache
+C:\Users\n.kabasaj\Desktop\Devops\PostService\PostService\PostService.Repository\obj\Debug\net5.0\PostService.Repository.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\n.kabasaj\Desktop\Devops\PostService\PostService\PostService.Repository\obj\Debug\net5.0\PostService.Repository.AssemblyInfoInputs.cache
+C:\Users\n.kabasaj\Desktop\Devops\PostService\PostService\PostService.Repository\obj\Debug\net5.0\PostService.Repository.AssemblyInfo.cs
+C:\Users\n.kabasaj\Desktop\Devops\PostService\PostService\PostService.Repository\obj\Debug\net5.0\PostService.Repository.csproj.CoreCompileInputs.cache
+C:\Users\n.kabasaj\Desktop\Devops\PostService\PostService\PostService.Repository\obj\Debug\net5.0\PostService.Repository.dll
+C:\Users\n.kabasaj\Desktop\Devops\PostService\PostService\PostService.Repository\obj\Debug\net5.0\PostService.Repository.pdb
