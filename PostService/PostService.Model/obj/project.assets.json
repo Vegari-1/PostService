@@ -8,23 +8,19 @@
     "net6.0": []
   },
   "packageFolders": {
-    "C:\\Users\\n.kabasaj\\.nuget\\packages\\": {},
-    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
+    "C:\\Users\\nikol\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\n.kabasaj\\Desktop\\Devops\\PostService\\PostService\\PostService.Model\\PostService.Model.csproj",
+      "projectUniqueName": "C:\\Users\\nikol\\Desktop\\DevOps\\PostService\\PostService\\PostService.Model\\PostService.Model.csproj",
       "projectName": "PostService.Model",
-      "projectPath": "C:\\Users\\n.kabasaj\\Desktop\\Devops\\PostService\\PostService\\PostService.Model\\PostService.Model.csproj",
-      "packagesPath": "C:\\Users\\n.kabasaj\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\n.kabasaj\\Desktop\\Devops\\PostService\\PostService\\PostService.Model\\obj\\",
+      "projectPath": "C:\\Users\\nikol\\Desktop\\DevOps\\PostService\\PostService\\PostService.Model\\PostService.Model.csproj",
+      "packagesPath": "C:\\Users\\nikol\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\nikol\\Desktop\\DevOps\\PostService\\PostService\\PostService.Model\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-      ],
       "configFilePaths": [
-        "C:\\Users\\n.kabasaj\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\nikol\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [

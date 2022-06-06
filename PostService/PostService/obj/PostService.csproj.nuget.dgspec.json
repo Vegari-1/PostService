@@ -1,23 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\n.kabasaj\\Desktop\\Devops\\PostService\\PostService\\PostService\\PostService.csproj": {}
+    "C:\\Users\\nikol\\Desktop\\DevOps\\PostService\\PostService\\PostService\\PostService.csproj": {}
   },
   "projects": {
-    "C:\\Users\\n.kabasaj\\Desktop\\Devops\\PostService\\PostService\\PostSerivice.Repository.Interface\\PostService.Repository.Interface.csproj": {
+    "C:\\Users\\nikol\\Desktop\\DevOps\\PostService\\PostService\\PostSerivice.Repository.Interface\\PostService.Repository.Interface.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\n.kabasaj\\Desktop\\Devops\\PostService\\PostService\\PostSerivice.Repository.Interface\\PostService.Repository.Interface.csproj",
+        "projectUniqueName": "C:\\Users\\nikol\\Desktop\\DevOps\\PostService\\PostService\\PostSerivice.Repository.Interface\\PostService.Repository.Interface.csproj",
         "projectName": "PostService.Repository.Interface",
-        "projectPath": "C:\\Users\\n.kabasaj\\Desktop\\Devops\\PostService\\PostService\\PostSerivice.Repository.Interface\\PostService.Repository.Interface.csproj",
-        "packagesPath": "C:\\Users\\n.kabasaj\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\n.kabasaj\\Desktop\\Devops\\PostService\\PostService\\PostSerivice.Repository.Interface\\obj\\",
+        "projectPath": "C:\\Users\\nikol\\Desktop\\DevOps\\PostService\\PostService\\PostSerivice.Repository.Interface\\PostService.Repository.Interface.csproj",
+        "packagesPath": "C:\\Users\\nikol\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\nikol\\Desktop\\DevOps\\PostService\\PostService\\PostSerivice.Repository.Interface\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-        ],
         "configFilePaths": [
-          "C:\\Users\\n.kabasaj\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\nikol\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -31,8 +28,8 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "C:\\Users\\n.kabasaj\\Desktop\\Devops\\PostService\\PostService\\PostService.Model\\PostService.Model.csproj": {
-                "projectPath": "C:\\Users\\n.kabasaj\\Desktop\\Devops\\PostService\\PostService\\PostService.Model\\PostService.Model.csproj"
+              "C:\\Users\\nikol\\Desktop\\DevOps\\PostService\\PostService\\PostService.Model\\PostService.Model.csproj": {
+                "projectPath": "C:\\Users\\nikol\\Desktop\\DevOps\\PostService\\PostService\\PostService.Model\\PostService.Model.csproj"
               }
             }
           }
@@ -65,20 +62,17 @@
         }
       }
     },
-    "C:\\Users\\n.kabasaj\\Desktop\\Devops\\PostService\\PostService\\PostService.Model\\PostService.Model.csproj": {
+    "C:\\Users\\nikol\\Desktop\\DevOps\\PostService\\PostService\\PostService.Model\\PostService.Model.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\n.kabasaj\\Desktop\\Devops\\PostService\\PostService\\PostService.Model\\PostService.Model.csproj",
+        "projectUniqueName": "C:\\Users\\nikol\\Desktop\\DevOps\\PostService\\PostService\\PostService.Model\\PostService.Model.csproj",
         "projectName": "PostService.Model",
-        "projectPath": "C:\\Users\\n.kabasaj\\Desktop\\Devops\\PostService\\PostService\\PostService.Model\\PostService.Model.csproj",
-        "packagesPath": "C:\\Users\\n.kabasaj\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\n.kabasaj\\Desktop\\Devops\\PostService\\PostService\\PostService.Model\\obj\\",
+        "projectPath": "C:\\Users\\nikol\\Desktop\\DevOps\\PostService\\PostService\\PostService.Model\\PostService.Model.csproj",
+        "packagesPath": "C:\\Users\\nikol\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\nikol\\Desktop\\DevOps\\PostService\\PostService\\PostService.Model\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-        ],
         "configFilePaths": [
-          "C:\\Users\\n.kabasaj\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\nikol\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -122,20 +116,17 @@
         }
       }
     },
-    "C:\\Users\\n.kabasaj\\Desktop\\Devops\\PostService\\PostService\\PostService.Repository\\PostService.Repository.csproj": {
+    "C:\\Users\\nikol\\Desktop\\DevOps\\PostService\\PostService\\PostService.Repository\\PostService.Repository.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\n.kabasaj\\Desktop\\Devops\\PostService\\PostService\\PostService.Repository\\PostService.Repository.csproj",
+        "projectUniqueName": "C:\\Users\\nikol\\Desktop\\DevOps\\PostService\\PostService\\PostService.Repository\\PostService.Repository.csproj",
         "projectName": "PostService.Repository",
-        "projectPath": "C:\\Users\\n.kabasaj\\Desktop\\Devops\\PostService\\PostService\\PostService.Repository\\PostService.Repository.csproj",
-        "packagesPath": "C:\\Users\\n.kabasaj\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\n.kabasaj\\Desktop\\Devops\\PostService\\PostService\\PostService.Repository\\obj\\",
+        "projectPath": "C:\\Users\\nikol\\Desktop\\DevOps\\PostService\\PostService\\PostService.Repository\\PostService.Repository.csproj",
+        "packagesPath": "C:\\Users\\nikol\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\nikol\\Desktop\\DevOps\\PostService\\PostService\\PostService.Repository\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-        ],
         "configFilePaths": [
-          "C:\\Users\\n.kabasaj\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\nikol\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -149,8 +140,8 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "C:\\Users\\n.kabasaj\\Desktop\\Devops\\PostService\\PostService\\PostSerivice.Repository.Interface\\PostService.Repository.Interface.csproj": {
-                "projectPath": "C:\\Users\\n.kabasaj\\Desktop\\Devops\\PostService\\PostService\\PostSerivice.Repository.Interface\\PostService.Repository.Interface.csproj"
+              "C:\\Users\\nikol\\Desktop\\DevOps\\PostService\\PostService\\PostSerivice.Repository.Interface\\PostService.Repository.Interface.csproj": {
+                "projectPath": "C:\\Users\\nikol\\Desktop\\DevOps\\PostService\\PostService\\PostSerivice.Repository.Interface\\PostService.Repository.Interface.csproj"
               }
             }
           }
@@ -199,20 +190,17 @@
         }
       }
     },
-    "C:\\Users\\n.kabasaj\\Desktop\\Devops\\PostService\\PostService\\PostService.Service.Interface\\PostService.Service.Interface.csproj": {
+    "C:\\Users\\nikol\\Desktop\\DevOps\\PostService\\PostService\\PostService.Service.Interface\\PostService.Service.Interface.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\n.kabasaj\\Desktop\\Devops\\PostService\\PostService\\PostService.Service.Interface\\PostService.Service.Interface.csproj",
+        "projectUniqueName": "C:\\Users\\nikol\\Desktop\\DevOps\\PostService\\PostService\\PostService.Service.Interface\\PostService.Service.Interface.csproj",
         "projectName": "PostService.Service.Interface",
-        "projectPath": "C:\\Users\\n.kabasaj\\Desktop\\Devops\\PostService\\PostService\\PostService.Service.Interface\\PostService.Service.Interface.csproj",
-        "packagesPath": "C:\\Users\\n.kabasaj\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\n.kabasaj\\Desktop\\Devops\\PostService\\PostService\\PostService.Service.Interface\\obj\\",
+        "projectPath": "C:\\Users\\nikol\\Desktop\\DevOps\\PostService\\PostService\\PostService.Service.Interface\\PostService.Service.Interface.csproj",
+        "packagesPath": "C:\\Users\\nikol\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\nikol\\Desktop\\DevOps\\PostService\\PostService\\PostService.Service.Interface\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-        ],
         "configFilePaths": [
-          "C:\\Users\\n.kabasaj\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\nikol\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -226,8 +214,8 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "C:\\Users\\n.kabasaj\\Desktop\\Devops\\PostService\\PostService\\PostSerivice.Repository.Interface\\PostService.Repository.Interface.csproj": {
-                "projectPath": "C:\\Users\\n.kabasaj\\Desktop\\Devops\\PostService\\PostService\\PostSerivice.Repository.Interface\\PostService.Repository.Interface.csproj"
+              "C:\\Users\\nikol\\Desktop\\DevOps\\PostService\\PostService\\PostSerivice.Repository.Interface\\PostService.Repository.Interface.csproj": {
+                "projectPath": "C:\\Users\\nikol\\Desktop\\DevOps\\PostService\\PostService\\PostSerivice.Repository.Interface\\PostService.Repository.Interface.csproj"
               }
             }
           }
@@ -260,20 +248,17 @@
         }
       }
     },
-    "C:\\Users\\n.kabasaj\\Desktop\\Devops\\PostService\\PostService\\PostService.Service\\PostService.Service.csproj": {
+    "C:\\Users\\nikol\\Desktop\\DevOps\\PostService\\PostService\\PostService.Service\\PostService.Service.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\n.kabasaj\\Desktop\\Devops\\PostService\\PostService\\PostService.Service\\PostService.Service.csproj",
+        "projectUniqueName": "C:\\Users\\nikol\\Desktop\\DevOps\\PostService\\PostService\\PostService.Service\\PostService.Service.csproj",
         "projectName": "PostService.Service",
-        "projectPath": "C:\\Users\\n.kabasaj\\Desktop\\Devops\\PostService\\PostService\\PostService.Service\\PostService.Service.csproj",
-        "packagesPath": "C:\\Users\\n.kabasaj\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\n.kabasaj\\Desktop\\Devops\\PostService\\PostService\\PostService.Service\\obj\\",
+        "projectPath": "C:\\Users\\nikol\\Desktop\\DevOps\\PostService\\PostService\\PostService.Service\\PostService.Service.csproj",
+        "packagesPath": "C:\\Users\\nikol\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\nikol\\Desktop\\DevOps\\PostService\\PostService\\PostService.Service\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-        ],
         "configFilePaths": [
-          "C:\\Users\\n.kabasaj\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\nikol\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -287,8 +272,8 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "C:\\Users\\n.kabasaj\\Desktop\\Devops\\PostService\\PostService\\PostService.Service.Interface\\PostService.Service.Interface.csproj": {
-                "projectPath": "C:\\Users\\n.kabasaj\\Desktop\\Devops\\PostService\\PostService\\PostService.Service.Interface\\PostService.Service.Interface.csproj"
+              "C:\\Users\\nikol\\Desktop\\DevOps\\PostService\\PostService\\PostService.Service.Interface\\PostService.Service.Interface.csproj": {
+                "projectPath": "C:\\Users\\nikol\\Desktop\\DevOps\\PostService\\PostService\\PostService.Service.Interface\\PostService.Service.Interface.csproj"
               }
             }
           }
@@ -321,20 +306,17 @@
         }
       }
     },
-    "C:\\Users\\n.kabasaj\\Desktop\\Devops\\PostService\\PostService\\PostService\\PostService.csproj": {
+    "C:\\Users\\nikol\\Desktop\\DevOps\\PostService\\PostService\\PostService\\PostService.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\n.kabasaj\\Desktop\\Devops\\PostService\\PostService\\PostService\\PostService.csproj",
+        "projectUniqueName": "C:\\Users\\nikol\\Desktop\\DevOps\\PostService\\PostService\\PostService\\PostService.csproj",
         "projectName": "PostService",
-        "projectPath": "C:\\Users\\n.kabasaj\\Desktop\\Devops\\PostService\\PostService\\PostService\\PostService.csproj",
-        "packagesPath": "C:\\Users\\n.kabasaj\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\n.kabasaj\\Desktop\\Devops\\PostService\\PostService\\PostService\\obj\\",
+        "projectPath": "C:\\Users\\nikol\\Desktop\\DevOps\\PostService\\PostService\\PostService\\PostService.csproj",
+        "packagesPath": "C:\\Users\\nikol\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\nikol\\Desktop\\DevOps\\PostService\\PostService\\PostService\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-        ],
         "configFilePaths": [
-          "C:\\Users\\n.kabasaj\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\nikol\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -348,11 +330,11 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "C:\\Users\\n.kabasaj\\Desktop\\Devops\\PostService\\PostService\\PostService.Repository\\PostService.Repository.csproj": {
-                "projectPath": "C:\\Users\\n.kabasaj\\Desktop\\Devops\\PostService\\PostService\\PostService.Repository\\PostService.Repository.csproj"
+              "C:\\Users\\nikol\\Desktop\\DevOps\\PostService\\PostService\\PostService.Repository\\PostService.Repository.csproj": {
+                "projectPath": "C:\\Users\\nikol\\Desktop\\DevOps\\PostService\\PostService\\PostService.Repository\\PostService.Repository.csproj"
               },
-              "C:\\Users\\n.kabasaj\\Desktop\\Devops\\PostService\\PostService\\PostService.Service\\PostService.Service.csproj": {
-                "projectPath": "C:\\Users\\n.kabasaj\\Desktop\\Devops\\PostService\\PostService\\PostService.Service\\PostService.Service.csproj"
+              "C:\\Users\\nikol\\Desktop\\DevOps\\PostService\\PostService\\PostService.Service\\PostService.Service.csproj": {
+                "projectPath": "C:\\Users\\nikol\\Desktop\\DevOps\\PostService\\PostService\\PostService.Service\\PostService.Service.csproj"
               }
             }
           }
