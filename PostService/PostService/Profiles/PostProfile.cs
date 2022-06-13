@@ -4,7 +4,7 @@ using AutoMapper;
 
 namespace PostService.Profiles
 {
-    public class PostProfile : Profile
+    public class PostProfile : AutoMapper.Profile
     {
         public PostProfile()
         {
