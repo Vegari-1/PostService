@@ -10,10 +10,15 @@ namespace PostService.Model
         public string Content { get; set; }
         public DateTime TimeStamp { get; set; }
 
-        public Post(string content, DateTime timeStamp)
+        public Guid AuthorId { get; set; }
+
+        public Post(string content, DateTime timeStamp, Guid authorId)
         {
             Content = content;
             TimeStamp = timeStamp;
+            AuthorId = authorId;
         }
+
+        public Post() { }
     }
 }

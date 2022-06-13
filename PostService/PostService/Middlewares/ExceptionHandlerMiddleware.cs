@@ -7,8 +7,8 @@ using System;
 
 namespace PostService.Middlewares
 {
-	public class ExceptionHandlerMiddleware
-	{
+    public class ExceptionHandlerMiddleware
+    {
         private readonly RequestDelegate _next;
 
         public ExceptionHandlerMiddleware(RequestDelegate next)

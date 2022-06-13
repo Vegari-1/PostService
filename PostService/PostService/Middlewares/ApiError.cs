@@ -1,7 +1,7 @@
 ﻿namespace PostService.Middlewares
 {
-	public class ApiError
-	{
+    public class ApiError
+    {
 
         public string Id { get; set; }
         public string Message { get; set; }
