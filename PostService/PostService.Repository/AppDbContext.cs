@@ -15,5 +15,7 @@ namespace PostService.Repository
 
         public DbSet<Profile> Profiles { get; set; }
 
+        public DbSet<Connection> Connections { get; set; }
+
     }
 }
