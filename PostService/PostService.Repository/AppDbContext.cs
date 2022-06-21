@@ -11,8 +11,13 @@ namespace PostService.Repository
 
         }
 
-        public DbSet<Post> Posts { get ; set; }
+        public DbSet<Post> Posts { get; set; }
 
-       
+        public DbSet<Profile> Profiles { get; set; }
+
+        public DbSet<Connection> Connections { get; set; }
+
+        public DbSet<Reaction> Reactions { get; set; }
+
     }
 }

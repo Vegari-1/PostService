@@ -10,5 +10,7 @@ namespace PostService.Dto
         public string Content { get; set; }
 
         public DateTime TimeStamp { get; set; }
+
+        public string AuthorId { get; set; }
     }
 }

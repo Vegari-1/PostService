@@ -4,13 +4,12 @@ using AutoMapper;
 
 namespace PostService.Profiles
 {
-    public class PostProfile : AutoMapper.Profile
+    public class ReactionProfile : AutoMapper.Profile
     {
-        public PostProfile()
+        public ReactionProfile()
         {
             // Source -> Target
-            CreateMap<PostRequest, Post>();
+            CreateMap<ReactionRequest, Reaction>();
         }
-
     }
 }
