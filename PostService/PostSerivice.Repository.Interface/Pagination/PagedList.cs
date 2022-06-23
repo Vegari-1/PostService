@@ -18,6 +18,7 @@ namespace PostService.Repository.Interface.Pagination
         public bool HasPrevious => CurrentPage > 1;
         public bool HasNext => CurrentPage < TotalPages;
 
+
         public PagedList(List<T> items, int count, int pageNumber, int pageSize)
         {
             TotalCount = count;
@@ -39,5 +40,6 @@ namespace PostService.Repository.Interface.Pagination
 
             return new PagedList<T>(items, count, pageNumber, pageSize);
         }
+
     }
 }
