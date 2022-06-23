@@ -95,7 +95,7 @@ namespace PostService.Repository
                               join profile in _context.Profiles on post.AuthorId equals profile.Id
                               where profile.Public == true
                               select post;
-            res = res.Concat(publicPosts);
+            res = res.Concat(publicPosts).Distinct();
 
             return PagedList<Post>.ToPagedList(res,
                                                paginationParams.PageNumber,
