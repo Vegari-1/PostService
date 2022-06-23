@@ -4,6 +4,7 @@ using PostService.Repository.Interface.Pagination;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Linq;
+using System;
 
 namespace PostService.Service.Interface
 {
@@ -26,9 +27,19 @@ namespace PostService.Service.Interface
             return _postRepository.FindAll(paginationParams);
         }
 
-        public Task<PagedList<Post>> FindAllPublicAndFollowed(PaginationParams paginationParams)
+        public Task<PagedList<Post>> FindAllPublicAndFollowed(PaginationParams paginationParams, Guid profileId)
         {
-            return _postRepository.FindAllPublicAndFollowed(paginationParams);
+            return _postRepository.FindAllPublicAndFollowed(paginationParams, profileId);
+        }
+
+        public Task<PagedList<Post>> FindAllPublic(PaginationParams paginationParams)
+        {
+            return _postRepository.FindAllPublic(paginationParams);
+        }
+
+        public Task<PagedList<Post>> FindAllFollowed(PaginationParams paginationParams, Guid profileId)
+        {
+            return _postRepository.FindAllFollowed(paginationParams, profileId);
         }
     }
 }

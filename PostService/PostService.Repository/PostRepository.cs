@@ -33,23 +33,69 @@ namespace PostService.Repository
                                                paginationParams.PageSize);
         }
 
-        public async Task<PagedList<Post>> FindAllPublicAndFollowed(PaginationParams paginationParams)
+        
+
+        public async Task<PagedList<Post>> FindAllPublic(PaginationParams paginationParams)
         {
-            var connections = _context.Connections;
             var publicPosts = from post in _context.Posts
-                      join profile in _context.Profiles on post.AuthorId equals profile.Id
-                      where profile.Public == true
-                      select post;
-                  
-            var profile1 = from post in publicPosts
+                              join profile in _context.Profiles on post.AuthorId equals profile.Id
+                              where profile.Public == true
+                              select post;
+
+            return PagedList<Post>.ToPagedList(publicPosts,
+                                               paginationParams.PageNumber,
+                                               paginationParams.PageSize);
+        }
+
+        public async Task<PagedList<Post>> FindAllFollowed(PaginationParams paginationParams, Guid profileId)
+        {
+            var connections = from c in _context.Connections
+                              select c;
+
+            var profile1 = from post in _context.Posts
                            join connection in connections on post.AuthorId equals connection.Profile1
-                  select post;
+                           where post.AuthorId == profileId
+                           select connection.Profile2;
 
-            var profile2 = from post in publicPosts
+            var profile2 = from post in _context.Posts
                            join connection in connections on post.AuthorId equals connection.Profile2
-                           select post;
+                           where post.AuthorId == profileId
+                           select connection.Profile1;
 
-            var res = profile1.Concat(profile2);
+            var connectedProfiles = profile1.Concat(profile2);
+            var res = from profile in connectedProfiles
+                      join post in _context.Posts on profile equals post.AuthorId
+                      select post;
+
+            return PagedList<Post>.ToPagedList(res,
+                                               paginationParams.PageNumber,
+                                               paginationParams.PageSize);
+        }
+
+        public async Task<PagedList<Post>> FindAllPublicAndFollowed(PaginationParams paginationParams, Guid profileId)
+        {
+            var connections = from c in _context.Connections
+                              select c;
+
+            var profile1 = from post in _context.Posts
+                           join connection in connections on post.AuthorId equals connection.Profile1
+                           where post.AuthorId == profileId
+                           select connection.Profile2;
+
+            var profile2 = from post in _context.Posts
+                           join connection in connections on post.AuthorId equals connection.Profile2
+                           where post.AuthorId == profileId
+                           select connection.Profile1;
+
+            var connectedProfiles = profile1.Concat(profile2);
+            var res = from profile in connectedProfiles
+                      join post in _context.Posts on profile equals post.AuthorId
+                      select post;
+            var publicPosts = from post in _context.Posts
+                              join profile in _context.Profiles on post.AuthorId equals profile.Id
+                              where profile.Public == true
+                              select post;
+            res = res.Concat(publicPosts);
 
             return PagedList<Post>.ToPagedList(res,
                                                paginationParams.PageNumber,
