@@ -38,7 +38,7 @@ namespace PostService.Controllers
         [HttpGet("public-followed")]
         public async Task<PagedList<Post>> FindAllPublicAndFollowed([FromQuery] PaginationParams paginationParams, [FromBody] FollowedProfilePostsRequest request)
         {
-            return await _postService.FindAllPublicAndFollowed(paginationParams);
+            return await _postService.FindAllPublicAndFollowed(paginationParams, request.ProfileId);
         }
 
         [HttpGet("public")]
