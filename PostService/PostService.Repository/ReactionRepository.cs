@@ -15,7 +15,17 @@ namespace PostService.Repository
 
         public async Task<Reaction> Save(Reaction reaction)
         {
-            await _context.Reactions.AddAsync(reaction);
+            Reaction savedReaction = (from r in _context.Reactions
+                                     where r.PostId == reaction.PostId && r.AuthorId == reaction.AuthorId
+                                     select r).FirstOrDefault();
+            if (savedReaction == null)
+            {
+                await _context.Reactions.AddAsync(reaction);
+            } else
+            {
+                savedReaction.Positive = reaction.Positive;
+            }
+            
             Post resPost = (from post in _context.Posts
                        where post.Id == reaction.PostId
                        select post).FirstOrDefault();
