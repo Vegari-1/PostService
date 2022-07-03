@@ -49,23 +49,22 @@ namespace PostService.Repository
 
         public async Task<PagedList<Post>> FindAllFollowed(PaginationParams paginationParams, Guid profileId)
         {
-            var connections = from c in _context.Connections
-                              select c;
+            var connections = (from c in _context.Connections
+                               where c.Profile1 == profileId || c.Profile2 == profileId
+                               select c).Distinct();
 
-            var profile1 = from post in _context.Posts
-                           join connection in connections on post.AuthorId equals connection.Profile1
-                           where post.AuthorId == profileId
+            var profile1 = from profile in _context.Profiles
+                           join connection in connections on profile.Id equals connection.Profile1
                            select connection.Profile2;
 
-            var profile2 = from post in _context.Posts
-                           join connection in connections on post.AuthorId equals connection.Profile2
-                           where post.AuthorId == profileId
-                           select connection.Profile1;
+            var profile2 = from profile in _context.Profiles
+                           join connection in connections on profile.Id equals connection.Profile2
+                           select connection.Profile2;
 
-            var connectedProfiles = profile1.Concat(profile2);
-            var res = from profile in connectedProfiles
+            var connectedProfiles = profile1.Concat(profile2).Distinct();
+            var res = (from profile in connectedProfiles
                       join post in _context.Posts on profile equals post.AuthorId
-                      select post;
+                      select post).Distinct();
 
             return PagedList<Post>.ToPagedList(res,
                                                paginationParams.PageNumber,
@@ -74,28 +73,9 @@ namespace PostService.Repository
 
         public async Task<PagedList<Post>> FindAllPublicAndFollowed(PaginationParams paginationParams, Guid profileId)
         {
-            var connections = from c in _context.Connections
-                              select c;
-
-            var profile1 = from post in _context.Posts
-                           join connection in connections on post.AuthorId equals connection.Profile1
-                           where post.AuthorId == profileId
-                           select connection.Profile2;
-
-            var profile2 = from post in _context.Posts
-                           join connection in connections on post.AuthorId equals connection.Profile2
-                           where post.AuthorId == profileId
-                           select connection.Profile1;
-
-            var connectedProfiles = profile1.Concat(profile2);
-            var res = from profile in connectedProfiles
-                      join post in _context.Posts on profile equals post.AuthorId
-                      select post;
-            var publicPosts = from post in _context.Posts
-                              join profile in _context.Profiles on post.AuthorId equals profile.Id
-                              where profile.Public == true
-                              select post;
-            res = res.Concat(publicPosts).Distinct();
+            var followed = await FindAllFollowed(paginationParams, profileId);
+            var publicPosts = await FindAllPublic(paginationParams);
+            var res = followed.ToList().Concat(publicPosts.ToList()).AsQueryable().Distinct();
 
             return PagedList<Post>.ToPagedList(res,
                                                paginationParams.PageNumber,

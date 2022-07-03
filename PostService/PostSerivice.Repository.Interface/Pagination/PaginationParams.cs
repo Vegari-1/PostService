@@ -25,6 +25,5 @@ namespace PostService.Repository.Interface.Pagination
                 _pageSize = (value > maxPageSize) ? maxPageSize : value;
             }
         }
-
     }
 }
