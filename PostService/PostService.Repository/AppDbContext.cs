@@ -17,5 +17,6 @@ namespace PostService.Repository
 
         public DbSet<Connection> Connections { get; set; }
 
+        public DbSet<Reaction> Reactions { get; set; }
     }
 }
