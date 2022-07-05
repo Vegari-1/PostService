@@ -16,9 +16,12 @@ AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
 
 //repositories
 builder.Services.AddScoped<IPostRepository, PostRepository>();
+builder.Services.AddScoped<IProfileRepository, ProfileRepository>();
+builder.Services.AddScoped<IReactionRepository, ReactionRepository>();
 
 //services
 builder.Services.AddScoped<IPostService, PostsService>();
+builder.Services.AddScoped<IReactionService, ReactionService>();
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
