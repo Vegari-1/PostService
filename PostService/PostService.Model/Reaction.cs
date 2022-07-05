@@ -9,11 +9,13 @@ namespace PostService.Model
         public Guid Id { get; set; }
         public bool Positive { get; set; }
         public Guid AuthorId { get; set; }
+        public Guid PostId { get; set; }
 
-        public Reaction(bool positive, Guid authorId)
+        public Reaction(bool positive, Guid authorId, Guid postId)
         {
             Positive = positive;
             AuthorId = authorId;
+            PostId = postId;
         }
     }
 }

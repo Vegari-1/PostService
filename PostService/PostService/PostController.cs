@@ -12,12 +12,14 @@ namespace PostService.Controllers
     public class PostController : ControllerBase
     {
         private readonly IPostService _postService;
+        private readonly IReactionService _reactionService;
         private readonly IMapper _mapper;
 
 
-        public PostController(IPostService postService, IMapper mapper)
+        public PostController(IPostService postService, IReactionService reactionService, IMapper mapper)
         {
             _postService = postService;
+            _reactionService = reactionService;
             _mapper = mapper;
         }
 
@@ -51,6 +53,14 @@ namespace PostService.Controllers
         public async Task<PagedList<Post>> FindAlldFollowed([FromQuery] PaginationParams paginationParams, [FromBody] FollowedProfilePostsRequest request)
         {
             return await _postService.FindAllFollowed(paginationParams, request.ProfileId);
+        }
+
+        [HttpPost("reaction")]
+        public async Task<IActionResult> React([FromBody] ReactionRequest request)
+        {
+            await _reactionService.Save(_mapper.Map<Reaction>(request));
+
+            return Ok("ok");
         }
 
     }
