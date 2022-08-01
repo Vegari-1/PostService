@@ -1,9 +1,11 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
+using OpenTracing;
 using PostService.Dto;
 using PostService.Model;
 using PostService.Repository.Interface.Pagination;
 using PostService.Service.Interface;
+using Prometheus;
 
 namespace PostService.Controllers
 {
@@ -14,13 +16,17 @@ namespace PostService.Controllers
         private readonly IPostService _postService;
         private readonly IReactionService _reactionService;
         private readonly IMapper _mapper;
+        private readonly ITracer _tracer;
+
+        Counter counter = Metrics.CreateCounter("auth_service_counter", "auth counter");
 
 
-        public PostController(IPostService postService, IReactionService reactionService, IMapper mapper)
+        public PostController(IPostService postService, IReactionService reactionService, IMapper mapper, ITracer tracer)
         {
             _postService = postService;
             _reactionService = reactionService;
             _mapper = mapper;
+            _tracer = tracer;
         }
 
         [HttpPost]
@@ -46,6 +52,12 @@ namespace PostService.Controllers
         [HttpGet("public")]
         public async Task<PagedList<Post>> FindAllPublic([FromQuery] PaginationParams paginationParams)
         {
+            var actionName = ControllerContext.ActionDescriptor.DisplayName;
+            using var scope = _tracer.BuildSpan(actionName).StartActive(true);
+            scope.Span.Log("public posts");
+
+            counter.Inc();
+
             return await _postService.FindAllPublic(paginationParams);
         }
 
