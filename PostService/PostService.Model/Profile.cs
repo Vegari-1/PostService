@@ -23,5 +23,9 @@ namespace PostService.Model
             Name = name;
             Surname = surname;
         }
+
+        public Profile()
+        {
+        }
     }
 }

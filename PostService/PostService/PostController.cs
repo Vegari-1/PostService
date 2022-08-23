@@ -9,22 +9,28 @@ using Prometheus;
 
 namespace PostService.Controllers
 {
-
+        
     [Route("api/[controller]")]
     public class PostController : ControllerBase
     {
         private readonly IPostService _postService;
         private readonly IReactionService _reactionService;
+        private readonly ICommentService _commentService;
         private readonly IMapper _mapper;
         private readonly ITracer _tracer;
 
-        Counter counter = Metrics.CreateCounter("auth_service_counter", "auth counter");
+        Counter counter = Metrics.CreateCounter("post_service_counter", "post counter");
 
 
-        public PostController(IPostService postService, IReactionService reactionService, IMapper mapper, ITracer tracer)
+        public PostController(IPostService postService,
+                                IReactionService reactionService,
+                                ICommentService commentService,
+                                IMapper mapper,
+                                ITracer tracer)
         {
             _postService = postService;
             _reactionService = reactionService;
+            _commentService = commentService;
             _mapper = mapper;
             _tracer = tracer;
         }
@@ -32,9 +38,8 @@ namespace PostService.Controllers
         [HttpPost]
         public async Task<IActionResult> Save([FromBody] PostRequest request)
         {
-            await _postService.Save(_mapper.Map<Post>(request));
-
-            return Ok("ok");
+            var post = await _postService.Save(_mapper.Map<Post>(request));
+            return StatusCode(StatusCodes.Status201Created, post);
         }
 
         [HttpGet]
@@ -70,9 +75,15 @@ namespace PostService.Controllers
         [HttpPost("reaction")]
         public async Task<IActionResult> React([FromBody] ReactionRequest request)
         {
-            await _reactionService.Save(_mapper.Map<Reaction>(request));
+            var reaction = await _reactionService.Save(_mapper.Map<Reaction>(request));
+            return StatusCode(StatusCodes.Status201Created, reaction);
+        }
 
-            return Ok("ok");
+        [HttpPost("comment")]
+        public async Task<IActionResult> Comment([FromBody] CommentRequest request)
+        {
+            var comment = await _commentService.Save(_mapper.Map<Comment>(request));
+            return StatusCode(StatusCodes.Status201Created, comment); ;
         }
 
     }

@@ -17,5 +17,9 @@ namespace PostService.Model
             AuthorId = authorId;
             PostId = postId;
         }
+
+        public Reaction()
+        {
+        }
     }
 }

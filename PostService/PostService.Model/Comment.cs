@@ -9,11 +9,17 @@ namespace PostService.Model
         public Guid Id { get; set; }
         public string Content { get; set; }
         public Guid AuthorId { get; set; }
+        public Guid PostId { get; set; }
 
-        public Comment(string content, Guid authorId)
+        public Comment(string content, Guid authorId, Guid postId)
         {
             Content = content;
             AuthorId = authorId;
+            PostId = postId;
+        }
+
+        public Comment()
+        {
         }
     }
 }
