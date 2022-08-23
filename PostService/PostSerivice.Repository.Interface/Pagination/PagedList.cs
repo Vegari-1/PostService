@@ -48,5 +48,9 @@ namespace PostService.Repository.Interface.Pagination
             return Items;
         }
 
+        public PagedList()
+        {
+                
+        }
     }
 }
