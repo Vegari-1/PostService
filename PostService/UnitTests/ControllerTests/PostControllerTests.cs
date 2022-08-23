@@ -56,8 +56,8 @@ namespace UnitTests.ControllerTests {
         private static ControllerActionDescriptor controllerActionDescriptor = new ControllerActionDescriptor() { ActionName = actionName };
         private static ControllerContext controllerContext = new ControllerContext() { ActionDescriptor = controllerActionDescriptor};
 
-        PostController postController = new PostController(mockPostService.Object, mockReactionService.Object, mockCommentService.Object, mockMapper.Object, mockTracer);
-      
+        PostController postController = new PostController(mockPostService.Object, mockReactionService.Object, mockCommentService.Object, mockMapper.Object, mockTracer) { ControllerContext = controllerContext };
+        
 
         private static void SetUp()
         {
