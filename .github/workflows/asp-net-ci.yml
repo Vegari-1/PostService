@@ -80,7 +80,7 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           context: ${{ env.PROJ_DIR }}
-          tags: ${{ format('{0}:{1}', env.DOCKERHUB_REPO, steps.version.outputs.new-release-version) }}
+          tags: ${{ env.DOCKERHUB_REPO }}:latest, ${{ env.DOCKERHUB_REPO }}:${{ steps.version.outputs.new-release-version }}
           push: true
           cache-from: type=registry,ref=${{ env.DOCKERHUB_REPO }}:buildcache
           cache-to: type=registry,ref=${{ env.DOCKERHUB_REPO }}:buildcache,mode=max
