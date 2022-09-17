@@ -9,10 +9,11 @@ namespace PostService.Repository.Interface
     public interface IPostRepository : IRepository<Post>
     {
         Task<Post> Save(Post post);
+
+        Task<IReadOnlyList<Post>> SearchPostByContent(string username, string query);
         Task<PagedList<Post>> FindAll(PaginationParams paginationParams);
-        Task<PagedList<Post>> FindAllPublicAndFollowed(PaginationParams paginationParams, Guid profileId);
-        Task<PagedList<Post>> FindAllPublic(PaginationParams paginationParams);
-        Task<PagedList<Post>> FindAllFollowed(PaginationParams paginationParams, Guid profileId);
+        Task<PagedList<Post>> FindAllProfilePosts(PaginationParams paginationParams, Guid profileId);
+        Task<PagedList<Post>> FindAllFollowedByUsername(PaginationParams paginationParams, string usernames);
         Task<Post> GetPost();
     }
 }

@@ -9,7 +9,11 @@ namespace PostService.Profiles
         public PostProfile()
         {
             // Source -> Target
-            CreateMap<PostRequest, Post>();
+            //CreateMap<PostRequest, Post>()
+            //    .ForMember(dest => dest.Images, src => src.MapFrom(s => s.Pictures));
+
+            //CreateMap<PostRequest, Post>()
+            //    .ForMember(dest => dest.Image, src => src.MapFrom(s => s.Picture));
         }
 
     }

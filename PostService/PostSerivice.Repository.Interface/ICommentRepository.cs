@@ -9,6 +9,8 @@ namespace PostService.Repository.Interface
 {
     public interface ICommentRepository : IRepository<Comment>
     {
-        Task<Comment> Save(Comment comment);
+        Task<Comment> Save(Guid postId, string username, Comment comment);
+
+        Task<List<Comment>> GetComments(Guid postId);
     }
 }

@@ -13,36 +13,52 @@ namespace PostService.Repository
     {
         public ReactionRepository(AppDbContext context) : base(context) { }
 
-        public async Task<Reaction> Save(Reaction reaction)
+        public async Task<Reaction> Save(Guid postId, string username, Reaction reaction)
         {
+            var authorId = _context.Profiles
+                           .Where(x => x.Username == username)
+                           .Select(x => x.Id)
+                           .FirstOrDefault();
+
             Reaction savedReaction = (from r in _context.Reactions
-                                     where r.PostId == reaction.PostId && r.AuthorId == reaction.AuthorId
+                                     where r.PostId == postId && r.AuthorId == authorId
                                      select r).FirstOrDefault();
+
             Post resPost = (from post in _context.Posts
-                            where post.Id == reaction.PostId
+                            where post.Id == postId
                             select post).FirstOrDefault();
+
             if (savedReaction == null)
             {
+                reaction.AuthorId = authorId;
+                reaction.PostId = postId;
                 await _context.Reactions.AddAsync(reaction);
                 if (reaction.Positive)
                 {
-                    resPost.Likes++;
+                    resPost.LikesNumber++;
+                    resPost.Likes.Add(reaction.AuthorId);
                 }
                 else
                 {
-                    resPost.Dislikes++;
+                    resPost.DislikesNumber++;
+                    resPost.Dislikes.Add(reaction.AuthorId);
                 }
             } else
             {
                 if (savedReaction.Positive && !reaction.Positive)
                 {
-                    resPost.Dislikes++;
-                    resPost.Likes--;
+                    resPost.DislikesNumber++;
+                    resPost.LikesNumber--;
+                    resPost.Dislikes.Add(reaction.AuthorId);
+                    resPost.Likes.Remove(reaction.AuthorId);
                 }
                 else if (!savedReaction.Positive && reaction.Positive)
                 {
-                    resPost.Likes++;
-                    resPost.Dislikes--;
+
+                    resPost.LikesNumber++;
+                    resPost.DislikesNumber--;
+                    resPost.Likes.Add(reaction.AuthorId);
+                    resPost.Dislikes.Remove(reaction.AuthorId);
                 }
                 savedReaction.Positive = reaction.Positive;
             }

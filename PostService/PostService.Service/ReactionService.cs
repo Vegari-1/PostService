@@ -4,6 +4,7 @@ using PostService.Repository.Interface.Pagination;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Linq;
+using System;
 
 namespace PostService.Service.Interface
 {
@@ -16,9 +17,9 @@ namespace PostService.Service.Interface
             _reactionRepository = reactionRepository;
         }
 
-        public Task<Reaction> Save(Reaction reaction)
+        public Task<Reaction> Save(Guid id, string username, Reaction reaction)
         {
-            return _reactionRepository.Save(reaction);
+            return _reactionRepository.Save(id, username, reaction);
         }
     }
 }

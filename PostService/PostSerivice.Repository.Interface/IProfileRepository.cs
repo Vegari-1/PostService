@@ -10,5 +10,7 @@ namespace PostService.Repository.Interface
     public interface IProfileRepository
     {
         Task<List<Profile>> FindAll();
+
+        Task<Profile> FindById(Guid id);
     }
 }

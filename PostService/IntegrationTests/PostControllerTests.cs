@@ -42,8 +42,8 @@ namespace PostService.IntegrationTests
         private static readonly string authorIdString = Guid.NewGuid().ToString();
         private static readonly string content = "test content";
         private static readonly DateTime timeStamp = new();
-        private static readonly int likes = 1;
-        private static readonly int dislikes = 2;
+        private static readonly List<Guid> likes = new List<Guid>();
+        private static readonly List<Guid> dislikes = new List<Guid>();
         private static readonly string name = "test name";
         private static readonly string surname = "test surname";
         private static readonly bool positive = true;
@@ -89,9 +89,7 @@ namespace PostService.IntegrationTests
             // Given
             CommentRequest commentRequest = new CommentRequest()
             {
-                Content = content,
-                AuthorId = authorId,
-                PostId = postId
+                Content = content
             };
             var requestContent = new StringContent(JsonConvert.SerializeObject(commentRequest), Encoding.UTF8, "application/json");
 
@@ -129,9 +127,7 @@ namespace PostService.IntegrationTests
 
             ReactionRequest reactionRequest = new ReactionRequest()
             {
-                Positive = positive,
-                AuthorId = authorId,
-                PostId = postId
+                Positive = positive
             };
             _factory.InsertPost(postsTableName, post);
             var requestContent = new StringContent(JsonConvert.SerializeObject(reactionRequest), Encoding.UTF8, "application/json");

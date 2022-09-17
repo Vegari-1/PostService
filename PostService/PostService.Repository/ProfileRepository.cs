@@ -17,5 +17,9 @@ namespace PostService.Repository
             return _context.Profiles.ToList();
         }
 
+        public async Task<Profile> FindById(Guid id)
+        {
+            return _context.Profiles.Where(x => x.Id == id).FirstOrDefault();
+        }
     }
 }

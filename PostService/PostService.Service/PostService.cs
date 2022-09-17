@@ -19,7 +19,7 @@ namespace PostService.Service.Interface
 
         public Task<Post> Save(Post post)
         {
-            return _postRepository.Save(post);
+                return _postRepository.Save(post);
         }
 
         public Task<PagedList<Post>> FindAll(PaginationParams paginationParams)
@@ -27,19 +27,19 @@ namespace PostService.Service.Interface
             return _postRepository.FindAll(paginationParams);
         }
 
-        public Task<PagedList<Post>> FindAllPublicAndFollowed(PaginationParams paginationParams, Guid profileId)
+        public Task<PagedList<Post>> FindAllProfilePosts(PaginationParams paginationParams, Guid profileId)
         {
-            return _postRepository.FindAllPublicAndFollowed(paginationParams, profileId);
+            return _postRepository.FindAllProfilePosts(paginationParams, profileId);
         }
 
-        public Task<PagedList<Post>> FindAllPublic(PaginationParams paginationParams)
+        public Task<PagedList<Post>> FindAllFollowed(PaginationParams paginationParams, string username)
         {
-            return _postRepository.FindAllPublic(paginationParams);
+            return _postRepository.FindAllFollowedByUsername(paginationParams, username);
         }
 
-        public Task<PagedList<Post>> FindAllFollowed(PaginationParams paginationParams, Guid profileId)
+        public Task<IReadOnlyList<Post>> SearchPostByContent(string username, string query)
         {
-            return _postRepository.FindAllFollowed(paginationParams, profileId);
+            return _postRepository.SearchPostByContent(username, query);
         }
     }
 }
