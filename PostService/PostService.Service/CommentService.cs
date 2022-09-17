@@ -18,9 +18,9 @@ namespace PostService.Service
             _commentRepository = commentRepository;
         }
 
-        public Task<Comment> Save(Guid postId, string username, Comment comment)
+        public Task<Comment> Save(Guid postId, Guid profileId, Comment comment)
         {
-            return _commentRepository.Save(postId, username, comment);
+            return _commentRepository.Save(postId, profileId, comment);
         }
 
         public Task<List<Comment>> GetComments(Guid postId)

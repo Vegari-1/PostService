@@ -12,10 +12,10 @@ namespace PostService.Repository
     {
         public CommentRepository(AppDbContext context) : base(context) { }
 
-        public async Task<Comment> Save(Guid postId, string username, Comment comment)
+        public async Task<Comment> Save(Guid postId, Guid profileId, Comment comment)
         {
             var authorId = _context.Profiles
-                           .Where(x => x.Username == username)
+                           .Where(x => x.Id == profileId)
                            .Select(x => x.Id)
                            .FirstOrDefault();
 

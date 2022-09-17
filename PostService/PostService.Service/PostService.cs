@@ -32,14 +32,14 @@ namespace PostService.Service.Interface
             return _postRepository.FindAllProfilePosts(paginationParams, profileId);
         }
 
-        public Task<PagedList<Post>> FindAllFollowed(PaginationParams paginationParams, string username)
+        public Task<PagedList<Post>> FindAllFollowed(PaginationParams paginationParams, Guid profileId)
         {
-            return _postRepository.FindAllFollowedByUsername(paginationParams, username);
+            return _postRepository.FindAllFollowedByUsername(paginationParams, profileId);
         }
 
-        public Task<IReadOnlyList<Post>> SearchPostByContent(string username, string query)
+        public Task<IReadOnlyList<Post>> SearchPostByContent(Guid id, string query)
         {
-            return _postRepository.SearchPostByContent(username, query);
+            return _postRepository.SearchPostByContent(id, query);
         }
     }
 }

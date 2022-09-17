@@ -8,6 +8,6 @@ namespace PostService.Service.Interface
 {
     public interface IReactionService
     {
-        Task<Reaction> Save(Guid id, string username, Reaction reaction);
+        Task<Reaction> Save(Guid id, Guid profileId, Reaction reaction);
     }
 }

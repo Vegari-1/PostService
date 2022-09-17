@@ -108,9 +108,9 @@ namespace PostService.Repository
                                                paginationParams.PageSize);
         }
 
-        public async Task<PagedList<Post>> FindAllFollowedByUsername(PaginationParams paginationParams, string username)
+        public async Task<PagedList<Post>> FindAllFollowedByUsername(PaginationParams paginationParams, Guid profileId)
         {
-            var connectedProfiles = await GetFollowedProfilesIds(username);
+            var connectedProfiles = await GetFollowedProfilesIds(profileId);
             
             var res = (from post in _context.Posts
                        where connectedProfiles.Contains(post.AuthorId)
@@ -151,14 +151,8 @@ namespace PostService.Repository
                                                paginationParams.PageSize);
         }
 
-        private async Task<IReadOnlyList<Guid>> GetFollowedProfilesIds(string username)
+        private async Task<IReadOnlyList<Guid>> GetFollowedProfilesIds(Guid profileId)
         {
-
-            var profileId = _context.Profiles
-                            .Where(x => x.Username == username)
-                            .Select(x => x.Id)
-                            .FirstOrDefault();
-
             var connections = (from c in _context.Connections
                                where c.Profile1 == profileId || c.Profile2 == profileId
                                select c).Distinct();
@@ -177,14 +171,14 @@ namespace PostService.Repository
 
         }
 
-        public async Task<IReadOnlyList<Post>> SearchPostByContent(string username, string query)
+        public async Task<IReadOnlyList<Post>> SearchPostByContent(Guid profileId, string query)
         {
 
-            var connectedProfiles = await GetFollowedProfilesIds(username);
+            var connectedProfiles = await GetFollowedProfilesIds(profileId);
 
             var posts =  (from post in _context.Posts
                          where connectedProfiles.Contains(post.AuthorId) && 
-                               post.Content.ToLower().Contains(query.ToLower()) 
+                               post.Content.ToLower().Contains(query.ToLower())
                          select new Post()
                          {
                              Id = post.Id,

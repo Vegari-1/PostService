@@ -10,10 +10,10 @@ namespace PostService.Repository.Interface
     {
         Task<Post> Save(Post post);
 
-        Task<IReadOnlyList<Post>> SearchPostByContent(string username, string query);
+        Task<IReadOnlyList<Post>> SearchPostByContent(Guid id, string query);
         Task<PagedList<Post>> FindAll(PaginationParams paginationParams);
         Task<PagedList<Post>> FindAllProfilePosts(PaginationParams paginationParams, Guid profileId);
-        Task<PagedList<Post>> FindAllFollowedByUsername(PaginationParams paginationParams, string usernames);
+        Task<PagedList<Post>> FindAllFollowedByUsername(PaginationParams paginationParams, Guid profileId);
         Task<Post> GetPost();
     }
 }
