@@ -7,10 +7,9 @@ using System.Threading.Tasks;
 
 namespace PostService.Service.Interface
 {
-    public interface ICommentService
+    public interface IProfileService
     {
-        Task<Comment> Save(Guid postId, string username, Comment comment);
+        Task<Profile> FindById(Guid id);
 
-        Task<List<Comment>> GetComments(Guid postId);
     }
 }

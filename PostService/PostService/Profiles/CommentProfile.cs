@@ -10,6 +10,7 @@ namespace PostService.Profiles
         {
             // Source -> Target
             CreateMap<CommentRequest, Comment>();
+
         }
     }
 }

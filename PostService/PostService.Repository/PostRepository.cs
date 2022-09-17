@@ -1,4 +1,5 @@
-﻿using PostService.Model;
+﻿using Microsoft.EntityFrameworkCore;
+using PostService.Model;
 using PostService.Repository.Interface;
 using PostService.Repository.Interface.Pagination;
 using System;
@@ -28,27 +29,136 @@ namespace PostService.Repository
 
         public async Task<PagedList<Post>> FindAll(PaginationParams paginationParams)
         {
-            return PagedList<Post>.ToPagedList(_context.Posts,
+            var posts = (from post in _context.Posts
+                         select new Post()
+                        {
+                            Id = post.Id,
+                            AuthorId = post.AuthorId,
+                            Content = post.Content,
+                            Likes = post.Likes,
+                            Dislikes = post.Dislikes,
+                            TimeStamp = post.TimeStamp,
+                            Images = (from image in _context.Images
+                                      where image.PostId == post.Id
+                                      select image).ToList(),
+                            Comments = (from comment in _context.Comments
+                                        join profile in _context.Profiles on comment.AuthorId equals profile.Id
+                                        select new Comment()
+                                        {
+                                            Id = comment.Id,
+                                            Content = comment.Content,
+                                            AuthorId = comment.AuthorId,
+                                            PostId = comment.PostId,
+                                            TimeStamp = comment.TimeStamp,
+                                            Name = profile.Name,
+                                            Surname = profile.Surname,
+                                            Username = profile.Username,
+                                            Image = _context.Images
+                                                            .Where(x => x.Id == comment.ImageId)
+                                                            .FirstOrDefault()
+
+                                        }).ToList()
+
+                        });
+
+
+            posts = posts.Where(x => x.Id.ToString() == "908a9615-8700-49a3-80c2-a66e1a972a11");
+
+            return PagedList<Post>.ToPagedList(posts,
                                                paginationParams.PageNumber,
                                                paginationParams.PageSize);
         }
 
-        
-
-        public async Task<PagedList<Post>> FindAllPublic(PaginationParams paginationParams)
+        public async Task<PagedList<Post>> FindAllProfilePosts(PaginationParams paginationParams, Guid profileId)
         {
-            var publicPosts = from post in _context.Posts
-                              join profile in _context.Profiles on post.AuthorId equals profile.Id
-                              where profile.Public == true
-                              select post;
+            var posts = (from post in _context.Posts
+                         where post.AuthorId == profileId
+                         select new Post()
+                         {
+                             Id = post.Id,
+                             AuthorId = post.AuthorId,
+                             Content = post.Content,
+                             Likes = post.Likes,
+                             Dislikes = post.Dislikes,
+                             TimeStamp = post.TimeStamp,
+                             Images = (from image in _context.Images
+                                       where image.PostId == post.Id
+                                       select image).ToList(),
+                             Comments = (from comment in _context.Comments
+                                         join profile in _context.Profiles on comment.AuthorId equals profile.Id
+                                         select new Comment()
+                                         {
+                                             Id = comment.Id,
+                                             Content = comment.Content,
+                                             AuthorId = comment.AuthorId,
+                                             PostId = comment.PostId,
+                                             TimeStamp = comment.TimeStamp,
+                                             Name = profile.Name,
+                                             Surname = profile.Surname,
+                                             Username = profile.Username,
+                                             Image = _context.Images
+                                                             .Where(x => x.Id == comment.ImageId)
+                                                             .FirstOrDefault()
 
-            return PagedList<Post>.ToPagedList(publicPosts,
+                                         }).ToList()
+
+                         });
+            return PagedList<Post>.ToPagedList(posts,
                                                paginationParams.PageNumber,
                                                paginationParams.PageSize);
         }
 
-        public async Task<PagedList<Post>> FindAllFollowed(PaginationParams paginationParams, Guid profileId)
+        public async Task<PagedList<Post>> FindAllFollowedByUsername(PaginationParams paginationParams, string username)
         {
+            var connectedProfiles = await GetFollowedProfilesIds(username);
+            
+            var res = (from post in _context.Posts
+                       where connectedProfiles.Contains(post.AuthorId)
+                       select new Post()
+                        {
+                            Id = post.Id,
+                            AuthorId = post.AuthorId,
+                            Content = post.Content,
+                            Likes = post.Likes,
+                            Dislikes = post.Dislikes,
+                            TimeStamp = post.TimeStamp,
+                            Images = (from image in _context.Images
+                                      where image.PostId == post.Id
+                                      select image).ToList(),
+                            Comments = (from comment in _context.Comments
+                                        join commentProfile in _context.Profiles on comment.AuthorId equals commentProfile.Id
+                                        select new Comment()
+                                        {
+                                            Id = comment.Id,
+                                            Content = comment.Content,
+                                            AuthorId = comment.AuthorId,
+                                            PostId = comment.PostId,
+                                            TimeStamp = comment.TimeStamp,
+                                            Name = commentProfile.Name,
+                                            Surname = commentProfile.Surname,
+                                            Username = commentProfile.Username,
+                                            Image = _context.Images
+                                                            .Where(x => x.Id == comment.ImageId)
+                                                            .FirstOrDefault()
+
+                                        }).ToList()
+
+                        });
+
+
+            return PagedList<Post>.ToPagedList(res,
+                                               paginationParams.PageNumber,
+                                               paginationParams.PageSize);
+        }
+
+        private async Task<IReadOnlyList<Guid>> GetFollowedProfilesIds(string username)
+        {
+
+            var profileId = _context.Profiles
+                            .Where(x => x.Username == username)
+                            .Select(x => x.Id)
+                            .FirstOrDefault();
+
             var connections = (from c in _context.Connections
                                where c.Profile1 == profileId || c.Profile2 == profileId
                                select c).Distinct();
@@ -62,24 +172,50 @@ namespace PostService.Repository
                            select connection.Profile2;
 
             var connectedProfiles = profile1.Concat(profile2).Distinct();
-            var res = (from profile in connectedProfiles
-                      join post in _context.Posts on profile equals post.AuthorId
-                      select post).Distinct();
 
-            return PagedList<Post>.ToPagedList(res,
-                                               paginationParams.PageNumber,
-                                               paginationParams.PageSize);
+            return connectedProfiles.ToList();
+
         }
 
-        public async Task<PagedList<Post>> FindAllPublicAndFollowed(PaginationParams paginationParams, Guid profileId)
+        public async Task<IReadOnlyList<Post>> SearchPostByContent(string username, string query)
         {
-            var followed = await FindAllFollowed(paginationParams, profileId);
-            var publicPosts = await FindAllPublic(paginationParams);
-            var res = followed.ToList().Concat(publicPosts.ToList()).AsQueryable().Distinct();
 
-            return PagedList<Post>.ToPagedList(res,
-                                               paginationParams.PageNumber,
-                                               paginationParams.PageSize);
+            var connectedProfiles = await GetFollowedProfilesIds(username);
+
+            var posts =  (from post in _context.Posts
+                         where connectedProfiles.Contains(post.AuthorId) && 
+                               post.Content.ToLower().Contains(query.ToLower()) 
+                         select new Post()
+                         {
+                             Id = post.Id,
+                             AuthorId = post.AuthorId,
+                             Content = post.Content,
+                             Likes = post.Likes,
+                             Dislikes = post.Dislikes,
+                             TimeStamp = post.TimeStamp,
+                             Images = (from image in _context.Images
+                                       where image.PostId == post.Id
+                                       select image).ToList(),
+                             Comments = (from comment in _context.Comments
+                                         join profile in _context.Profiles on comment.AuthorId equals profile.Id
+                                         select new Comment()
+                                         {
+                                             Id = comment.Id,
+                                             Content = comment.Content,
+                                             AuthorId = comment.AuthorId,
+                                             PostId = comment.PostId,
+                                             TimeStamp = comment.TimeStamp,
+                                             Name = profile.Name,
+                                             Surname = profile.Surname,
+                                             Username = profile.Username,
+                                             Image = _context.Images
+                                                             .Where(x => x.Id == comment.ImageId)
+                                                             .FirstOrDefault()
+
+                                         }).ToList()
+
+                         });
+            return posts.ToList();
         }
     }
 }

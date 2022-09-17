@@ -16,6 +16,7 @@ namespace PostService.Controllers
         private readonly IPostService _postService;
         private readonly IReactionService _reactionService;
         private readonly ICommentService _commentService;
+        private readonly IProfileService _profileService;
         private readonly IMapper _mapper;
         private readonly ITracer _tracer;
 
@@ -25,12 +26,14 @@ namespace PostService.Controllers
         public PostController(IPostService postService,
                                 IReactionService reactionService,
                                 ICommentService commentService,
+                                IProfileService profileService,
                                 IMapper mapper,
                                 ITracer tracer)
         {
             _postService = postService;
             _reactionService = reactionService;
             _commentService = commentService;
+            _profileService = profileService;
             _mapper = mapper;
             _tracer = tracer;
         }
@@ -38,52 +41,128 @@ namespace PostService.Controllers
         [HttpPost]
         public async Task<IActionResult> Save([FromBody] PostRequest request)
         {
-            var post = await _postService.Save(_mapper.Map<Post>(request));
+            var post = await _postService.Save(new Post()
+            {
+                Content = request.Content,
+                TimeStamp = request.TimeStamp,
+                AuthorId = new Guid(request.AuthorId),
+                Images = request.Pictures.Select(x => new Image(x)).ToList()
+            });
             return StatusCode(StatusCodes.Status201Created, post);
         }
 
         [HttpGet]
-        public async Task<PagedList<Post>> FindAll([FromQuery] PaginationParams paginationParams)
+        public async Task<PagedList<PostResponse>> FindAll([FromQuery] PaginationParams paginationParams, Guid profileId)
         {
-            return await _postService.FindAll(paginationParams);
+            
+            var posts = await _postService.FindAll(paginationParams);
+            var res = await convertPostToResponse(posts);
+            return res;
         }
 
-        [HttpPost("public-followed")]
-        public async Task<PagedList<Post>> FindAllPublicAndFollowed([FromQuery] PaginationParams paginationParams, [FromBody] FollowedProfilePostsRequest request)
+
+        [HttpGet]
+        [Route("search")]
+        public async Task<PagedList<PostResponse>> SearchPostByContent([FromQuery] SearchReqeust reqeust)
         {
-            return await _postService.FindAllPublicAndFollowed(paginationParams, request.ProfileId);
+            var posts = await _postService.SearchPostByContent(reqeust.Username, reqeust.Query);
+            var res = await convertPostToResponse(posts);
+            return res;
         }
 
-        [HttpGet("public")]
-        public async Task<PagedList<Post>> FindAllPublic([FromQuery] PaginationParams paginationParams)
+        [HttpGet]
+        [Route("profile/{profileId}")] 
+        public async Task<PagedList<PostResponse>> FindAllProfilePosts([FromQuery] PaginationParams paginationParams, Guid profileId)
         {
-            var actionName = ControllerContext.ActionDescriptor.DisplayName;
-            using var scope = _tracer.BuildSpan(actionName).StartActive(true);
-            scope.Span.Log("public posts");
-
-            counter.Inc();
-
-            return await _postService.FindAllPublic(paginationParams);
+            var posts = await _postService.FindAllProfilePosts(paginationParams, profileId);
+            var res = await convertPostToResponse(posts);
+            return res;
         }
 
-        [HttpPost("followed")]
-        public async Task<PagedList<Post>> FindAlldFollowed([FromQuery] PaginationParams paginationParams, [FromBody] FollowedProfilePostsRequest request)
+        [HttpGet("{username}")]
+        public async Task<PagedList<PostResponse>> FindAlldFollowed([FromQuery] PaginationParams paginationParams, string username)
         {
-            return await _postService.FindAllFollowed(paginationParams, request.ProfileId);
+            var posts = await _postService.FindAllFollowed(paginationParams, username);
+            var res = await convertPostToResponse(posts);
+            return res;
         }
 
-        [HttpPost("reaction")]
-        public async Task<IActionResult> React([FromBody] ReactionRequest request)
+        [HttpPost("{id}/reaction")]
+        public async Task<IActionResult> React([FromBody] ReactionRequest request, [FromQuery] string username, Guid id)
         {
-            var reaction = await _reactionService.Save(_mapper.Map<Reaction>(request));
+            var reaction = await _reactionService.Save(id, username, _mapper.Map<Reaction>(request));
             return StatusCode(StatusCodes.Status201Created, reaction);
         }
 
-        [HttpPost("comment")]
-        public async Task<IActionResult> Comment([FromBody] CommentRequest request)
+        [HttpPost("{id}/comment")]
+        public async Task<IActionResult> Comment([FromBody] CommentRequest request, [FromQuery] string username, Guid id)
         {
-            var comment = await _commentService.Save(_mapper.Map<Comment>(request));
+            var comment = await _commentService.Save(id, username, _mapper.Map<Comment>(request));
             return StatusCode(StatusCodes.Status201Created, comment); ;
+        }
+
+        [HttpGet("{postId}/comment")]
+        public async Task<List<Comment>> GetPostComments(Guid postId)
+        {
+            return await _commentService.GetComments(postId);
+        }
+
+        private async Task<PagedList<PostResponse>> convertPostToResponse(IReadOnlyList<Post> posts)
+        {
+            var res = new PagedList<PostResponse>();
+            foreach (var post in posts)
+            {
+                var profile = await _profileService.FindById(post.AuthorId);
+                var response = await CreateResponse(post, profile);
+                res.Add(response);
+            }
+            return res;
+        }
+
+        private async Task<PostResponse> CreateResponse(Post post, Model.Profile profile) {
+            return new PostResponse()
+            {
+                Id = post.Id,
+                Likes = post.LikesNumber,
+                Dislikes = post.DislikesNumber,
+                Content = post.Content,
+                Timestamp = post.TimeStamp,
+                Username = profile.Username,
+                Name = profile.Name,
+                Surname = profile.Surname,
+                Liked = post.Likes.Contains(profile.Id),
+                Disliked = post.Dislikes.Contains(profile.Id),
+                Comments = await MapComments(post.Comments ?? new List<Comment>()),
+                CommentCount = post.Comments.Count(),
+                Pictures = await MapImagesToStringList(post.Images)
+            };
+        }
+
+        private async Task<List<CommentResponse>> MapComments(List<Comment> comments)
+        {
+            if (comments is null)
+            {
+                return new List<CommentResponse>();
+            }
+            return comments.Select(c => new CommentResponse(
+                    c.Id,
+                    c.Name?? "",
+                    c.Surname,
+                    c.Username,
+                    c.Image?.Content,
+                    c.Content,
+                    c.TimeStamp.Value
+                ))
+                .ToList();
+        }
+
+        private async Task<List<string>> MapImagesToStringList(List<Image> images)
+        {
+            if (images is null)
+            {
+                return new List<string>();
+            }
+            return images.Select(x => x.Content).ToList();
         }
 
     }

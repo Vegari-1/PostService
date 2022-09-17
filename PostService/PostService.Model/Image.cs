@@ -7,11 +7,17 @@ namespace PostService.Model
     public class Image
     {
         public Guid Id { get; set; }
-        public string Location { get; set; }
+        public string Content { get; set; }
 
-        public Image(string location)
+        public Guid PostId { get; set; }
+        public Image(string content)
         {
-            Location = location;
+            Content = content;
+        }
+
+        public Image()
+        {
+
         }
     }
 }

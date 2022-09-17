@@ -12,5 +12,6 @@ namespace PostService.Dto
         public DateTime TimeStamp { get; set; }
 
         public string AuthorId { get; set; }
+        public List<string>? Pictures { get; set; }
     }
 }

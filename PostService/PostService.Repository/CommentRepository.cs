@@ -12,11 +12,18 @@ namespace PostService.Repository
     {
         public CommentRepository(AppDbContext context) : base(context) { }
 
-        public async Task<Comment> Save(Comment comment)
+        public async Task<Comment> Save(Guid postId, string username, Comment comment)
         {
-            Comment savedComment = (from c in _context.Comments
-                                    where c.AuthorId == comment.AuthorId
-                                    select c).FirstOrDefault();
+            var authorId = _context.Profiles
+                           .Where(x => x.Username == username)
+                           .Select(x => x.Id)
+                           .FirstOrDefault();
+
+
+            var savedComment = (from c in _context.Comments
+                                where c.AuthorId == authorId && c.PostId == postId
+                                select c).FirstOrDefault();
+                                    
 
             if (savedComment == null)
             {
@@ -29,6 +36,13 @@ namespace PostService.Repository
             _context.SaveChanges();
 
             return comment;
+        }
+
+        public async Task<List<Comment>> GetComments(Guid postId)
+        {
+            return _context.Comments
+                    .Where(x => x.PostId == postId)
+                    .ToList();
         }
     }
 }
