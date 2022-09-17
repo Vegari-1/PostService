@@ -8,6 +8,6 @@ namespace PostService.Repository.Interface
 {
     public interface IReactionRepository : IRepository<Reaction>
     {
-        Task<Reaction> Save(Guid postId, string username, Reaction reaction);
+        Task<Reaction> Save(Guid postId, Guid profileId, Reaction reaction);
     }
 }

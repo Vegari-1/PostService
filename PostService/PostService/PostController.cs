@@ -6,6 +6,7 @@ using PostService.Model;
 using PostService.Repository.Interface.Pagination;
 using PostService.Service.Interface;
 using Prometheus;
+using System.ComponentModel.DataAnnotations;
 
 namespace PostService.Controllers
 {
@@ -51,7 +52,7 @@ namespace PostService.Controllers
             return StatusCode(StatusCodes.Status201Created, post);
         }
 
-        [HttpGet]
+        
         public async Task<PagedList<PostResponse>> FindAll([FromQuery] PaginationParams paginationParams, Guid profileId)
         {
             
@@ -63,9 +64,11 @@ namespace PostService.Controllers
 
         [HttpGet]
         [Route("search")]
-        public async Task<PagedList<PostResponse>> SearchPostByContent([FromQuery] SearchReqeust reqeust)
+        public async Task<PagedList<PostResponse>> SearchPostByContent(
+            [FromHeader(Name = "profile-id")][Required] Guid id, 
+            [FromQuery] SearchReqeust reqeust)
         {
-            var posts = await _postService.SearchPostByContent(reqeust.Username, reqeust.Query);
+            var posts = await _postService.SearchPostByContent(id, reqeust.Query);
             var res = await convertPostToResponse(posts);
             return res;
         }
@@ -79,25 +82,33 @@ namespace PostService.Controllers
             return res;
         }
 
-        [HttpGet("{username}")]
-        public async Task<PagedList<PostResponse>> FindAlldFollowed([FromQuery] PaginationParams paginationParams, string username)
+        [HttpGet("")]
+        public async Task<PagedList<PostResponse>> FindAlldFollowed(
+            [FromQuery] PaginationParams paginationParams,
+            [FromHeader(Name = "profile-id")][Required] Guid profileId)
         {
-            var posts = await _postService.FindAllFollowed(paginationParams, username);
+            var posts = await _postService.FindAllFollowed(paginationParams, profileId);
             var res = await convertPostToResponse(posts);
             return res;
         }
 
         [HttpPost("{id}/reaction")]
-        public async Task<IActionResult> React([FromBody] ReactionRequest request, [FromQuery] string username, Guid id)
+        public async Task<IActionResult> React(
+            [FromBody] ReactionRequest request,
+            [FromHeader(Name = "profile-id")][Required] Guid profileId,
+            Guid id)
         {
-            var reaction = await _reactionService.Save(id, username, _mapper.Map<Reaction>(request));
+            var reaction = await _reactionService.Save(id, profileId, _mapper.Map<Reaction>(request));
             return StatusCode(StatusCodes.Status201Created, reaction);
         }
 
         [HttpPost("{id}/comment")]
-        public async Task<IActionResult> Comment([FromBody] CommentRequest request, [FromQuery] string username, Guid id)
+        public async Task<IActionResult> Comment(
+            [FromBody] CommentRequest request,
+            [FromHeader(Name = "profile-id")][Required] Guid profileId,
+            Guid id)
         {
-            var comment = await _commentService.Save(id, username, _mapper.Map<Comment>(request));
+            var comment = await _commentService.Save(id, profileId, _mapper.Map<Comment>(request));
             return StatusCode(StatusCodes.Status201Created, comment); ;
         }
 

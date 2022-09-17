@@ -9,7 +9,7 @@ namespace PostService.Service.Interface
 {
     public interface ICommentService
     {
-        Task<Comment> Save(Guid postId, string username, Comment comment);
+        Task<Comment> Save(Guid postId, Guid profileId, Comment comment);
 
         Task<List<Comment>> GetComments(Guid postId);
     }

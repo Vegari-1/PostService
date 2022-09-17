@@ -13,10 +13,10 @@ namespace PostService.Service.Interface
 
         Task<PagedList<Post>> FindAll(PaginationParams paginationParams);
 
-        Task<IReadOnlyList<Post>> SearchPostByContent(string username, string query);
+        Task<IReadOnlyList<Post>> SearchPostByContent(Guid id, string query);
 
         Task<PagedList<Post>> FindAllProfilePosts(PaginationParams paginationParams, Guid profileId);
 
-        Task<PagedList<Post>> FindAllFollowed(PaginationParams paginationParams, string username);
+        Task<PagedList<Post>> FindAllFollowed(PaginationParams paginationParams, Guid profileId);
     }
 }

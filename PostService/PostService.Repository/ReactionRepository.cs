@@ -13,13 +13,8 @@ namespace PostService.Repository
     {
         public ReactionRepository(AppDbContext context) : base(context) { }
 
-        public async Task<Reaction> Save(Guid postId, string username, Reaction reaction)
+        public async Task<Reaction> Save(Guid postId, Guid authorId, Reaction reaction)
         {
-            var authorId = _context.Profiles
-                           .Where(x => x.Username == username)
-                           .Select(x => x.Id)
-                           .FirstOrDefault();
-
             Reaction savedReaction = (from r in _context.Reactions
                                      where r.PostId == postId && r.AuthorId == authorId
                                      select r).FirstOrDefault();

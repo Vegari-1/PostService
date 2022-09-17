@@ -17,9 +17,9 @@ namespace PostService.Service.Interface
             _reactionRepository = reactionRepository;
         }
 
-        public Task<Reaction> Save(Guid id, string username, Reaction reaction)
+        public Task<Reaction> Save(Guid id, Guid profileId, Reaction reaction)
         {
-            return _reactionRepository.Save(id, username, reaction);
+            return _reactionRepository.Save(id, profileId, reaction);
         }
     }
 }
