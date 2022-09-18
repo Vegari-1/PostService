@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Http;
 using System.Threading.Tasks;
 using System;
 
-namespace PostService.Middlewares
+namespace PostService.Middlewares.Exception
 {
     public class ExceptionHandlerMiddleware
     {
@@ -26,7 +26,7 @@ namespace PostService.Middlewares
             {
                 await Reply(context, statusCode: ae.StatusCode, message: ae.Message);
             }
-            catch (Exception e)
+            catch (System.Exception e)
             {
                 await Reply(context, statusCode: 500, message: "An unexpected error has occured: " + e.ToString());
             }

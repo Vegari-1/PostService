@@ -5,21 +5,27 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Linq;
 using System;
+using PostService.Service.Interface.Sync;
+using BusService;
 
 namespace PostService.Service.Interface
 {
     public class PostsService : IPostService
     {
         private readonly IPostRepository _postRepository;
+        private readonly IPostSyncService _postSyncService;
 
-        public PostsService(IPostRepository IPostRepository)
+        public PostsService(IPostRepository IPostRepository, IPostSyncService postSyncService)
         {
             _postRepository = IPostRepository;
+            _postSyncService = postSyncService;
         }
 
-        public Task<Post> Save(Post post)
+        public async Task<Post> Save(Post post)
         {
-                return _postRepository.Save(post);
+            await _postRepository.Save(post);
+            _postSyncService.PublishAsync(post, Events.Created);
+            return post;
         }
 
         public Task<PagedList<Post>> FindAll(PaginationParams paginationParams)

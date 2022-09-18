@@ -1,6 +1,9 @@
 ﻿
+using System.ComponentModel.DataAnnotations.Schema;
+
 namespace PostService.Model
 {
+    [Table("Posts", Schema = "post")]
     public class Post
     {
         public Guid Id { get; set; }
