@@ -5,6 +5,7 @@ using PostService.Dto;
 using PostService.Model;
 using PostService.Repository.Interface.Pagination;
 using PostService.Service.Interface;
+using PostService.Service.Interface.Sync;
 using Prometheus;
 using System.ComponentModel.DataAnnotations;
 
@@ -17,7 +18,7 @@ namespace PostService.Controllers
         private readonly IPostService _postService;
         private readonly IReactionService _reactionService;
         private readonly ICommentService _commentService;
-        private readonly IProfileService _profileService;
+        private readonly IProfileSyncService _profileService;
         private readonly IMapper _mapper;
         private readonly ITracer _tracer;
 
@@ -27,7 +28,7 @@ namespace PostService.Controllers
         public PostController(IPostService postService,
                                 IReactionService reactionService,
                                 ICommentService commentService,
-                                IProfileService profileService,
+                                IProfileSyncService profileService,
                                 IMapper mapper,
                                 ITracer tracer)
         {
@@ -118,19 +119,19 @@ namespace PostService.Controllers
             return await _commentService.GetComments(postId);
         }
 
-        private async Task<PagedList<PostResponse>> convertPostToResponse(IReadOnlyList<Post> posts)
+        public async Task<PagedList<PostResponse>> convertPostToResponse(IReadOnlyList<Post> posts)
         {
             var res = new PagedList<PostResponse>();
             foreach (var post in posts)
             {
-                var profile = await _profileService.FindById(post.AuthorId);
+                var profile = await _profileService.GetByIdAsync(post.AuthorId);
                 var response = await CreateResponse(post, profile);
                 res.Add(response);
             }
             return res;
         }
 
-        private async Task<PostResponse> CreateResponse(Post post, Model.Profile profile) {
+        public async Task<PostResponse> CreateResponse(Post post, Model.Sync.Profile profile) {
             return new PostResponse()
             {
                 Id = post.Id,
@@ -149,7 +150,7 @@ namespace PostService.Controllers
             };
         }
 
-        private async Task<List<CommentResponse>> MapComments(List<Comment> comments)
+        public async Task<List<CommentResponse>> MapComments(List<Comment> comments)
         {
             if (comments is null)
             {
@@ -167,7 +168,7 @@ namespace PostService.Controllers
                 .ToList();
         }
 
-        private async Task<List<string>> MapImagesToStringList(List<Image> images)
+        public async Task<List<string>> MapImagesToStringList(List<Image> images)
         {
             if (images is null)
             {

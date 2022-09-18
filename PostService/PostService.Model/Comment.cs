@@ -1,10 +1,12 @@
 ﻿
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
 namespace PostService.Model
 {
+    [Table("Comments", Schema = "post")]
     public class Comment
     {
         public Guid Id { get; set; }

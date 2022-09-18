@@ -1,4 +1,3 @@
-using PostService.Middlewares;
 using PostService.Repository;
 using PostService.Repository.Interface;
 using PostService.Service;
@@ -14,25 +13,64 @@ using Jaeger.Samplers;
 using OpenTracing.Contrib.NetCore.Configuration;
 using OpenTracing.Util;
 using Prometheus;
+using PostService.Middlewares.Exception;
+using PostService.Repository.Interface.Sync;
+using PostService.Repository.Sync;
+using PostService.Service.Sync;
+using PostService.Service.Interface.Sync;
+using PostService.Middlewares.Events;
+using BusService;
+using Microsoft.Extensions.Options;
+using PostService.Messaging;
+using PostSevice.Middlewares.Events;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-builder.Services.AddDbContext<AppDbContext>(options =>
-    options.UseNpgsql(builder.Configuration.GetConnectionString("DislinktDbConnection")));
+builder.Configuration.AddEnvironmentVariables();
+
+// DB_HOST from Docker-Compose or Local if null
+var dbHost = Environment.GetEnvironmentVariable("DB_HOST");
+
+builder.Services.Configure<AppConfig>(
+    builder.Configuration.GetSection("AppConfig"));
+
+// Nats
+builder.Services.Configure<MessageBusSettings>(builder.Configuration.GetSection("Nats"));
+builder.Services.AddSingleton<IMessageBusSettings>(serviceProvider =>
+    serviceProvider.GetRequiredService<IOptions<MessageBusSettings>>().Value);
+builder.Services.AddSingleton<IMessageBusService, MessageBusService>();
+builder.Services.AddHostedService<ProfileMessageBusService>();
+builder.Services.AddHostedService<ConnectionMessageBusService>();
+builder.Services.AddHostedService<EventMessageBusService>();
+
+// Postgres
+if (dbHost == null)
+    builder.Services.AddDbContext<AppDbContext>(options =>
+        options.UseNpgsql(
+            builder.Configuration.GetConnectionString("DislinktDbConnection"),
+            x => x.MigrationsHistoryTable("__MigrationsHistory", "post")));
+else
+    builder.Services.AddDbContext<AppDbContext>(options =>
+        options.UseNpgsql(dbHost, x => x.MigrationsHistoryTable("__MigrationsHistory", "post")));
 AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
 
 //repositories
 builder.Services.AddScoped<IPostRepository, PostRepository>();
-builder.Services.AddScoped<IProfileRepository, ProfileRepository>();
 builder.Services.AddScoped<IReactionRepository, ReactionRepository>();
 builder.Services.AddScoped<ICommentRepository, CommentRepository>();
+builder.Services.AddScoped<IProfileRepository, ProfileRepository>();
+builder.Services.AddScoped<IConnectionRepository, ConnectionRepository>();
 
 //services
 builder.Services.AddScoped<IPostService, PostsService>();
 builder.Services.AddScoped<IReactionService, ReactionService>();
 builder.Services.AddScoped<ICommentService, CommentService>();
-builder.Services.AddScoped<IProfileService, ProfileService>();
+
+// Sync Services
+builder.Services.AddScoped<IPostSyncService, PostSyncService>();
+builder.Services.AddScoped<IProfileSyncService, ProfileSyncService>();
+builder.Services.AddScoped<IConnectionSyncService, ConnectionSyncService>();
+builder.Services.AddScoped<IEventSyncService, EventSyncService>();
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
@@ -71,6 +109,16 @@ builder.Services.Configure<HttpHandlerDiagnosticOptions>(options =>
 
 var app = builder.Build();
 
+// Run all migrations only on Docker container
+if (dbHost != null)
+    using (var scope = app.Services.CreateScope())
+    {
+        var services = scope.ServiceProvider;
+
+        var context = services.GetRequiredService<AppDbContext>();
+        context.Database.Migrate();
+    }
+
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
@@ -78,13 +126,11 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.UseHttpsRedirection();
-
-app.UseAuthorization();
 
 app.MapControllers();
 
 app.UseMiddleware<ExceptionHandlerMiddleware>();
+app.UseEventSenderMiddleware();
 
 // Prometheus metrics
 app.UseMetricServer();

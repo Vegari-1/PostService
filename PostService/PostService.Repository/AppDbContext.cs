@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using PostService.Model;
+using PostService.Model.Sync;
 using System;
 
 namespace PostService.Repository
@@ -24,12 +25,12 @@ namespace PostService.Repository
 
         public DbSet<Image> Images { get; set; }
 
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
-        {
+        //protected override void OnModelCreating(ModelBuilder modelBuilder)
+        //{
 
-            modelBuilder.Entity<Post>()
-            .HasMany(p => p.Images);
+        //    modelBuilder.Entity<Post>()
+        //    .HasMany(p => p.Images);
 
-        }
+        //}
     }
 }

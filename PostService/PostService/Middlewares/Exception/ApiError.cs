@@ -1,4 +1,4 @@
-﻿namespace PostService.Middlewares
+﻿namespace PostService.Middlewares.Exception
 {
     public class ApiError
     {

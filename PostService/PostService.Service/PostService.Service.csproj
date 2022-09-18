@@ -5,6 +5,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="BusService" Version="1.0.0-dev.13" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\PostService.Service.Interface\PostService.Service.Interface.csproj" />
   </ItemGroup>
 

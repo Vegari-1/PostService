@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations.Schema;
 
-namespace PostService.Model
+namespace PostService.Model.Sync
 {
+    [Table("Profiles", Schema = "post")]
     public class Profile
     {
         public Guid Id { get; set; }
@@ -20,7 +17,6 @@ namespace PostService.Model
 
         public Guid? ImageId { get; set; }
 
-        public Image Image { get; set; }
 
         public Profile(Guid id, bool @public, string name, string surname, string username)
         {

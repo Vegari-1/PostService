@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using Xunit;
 using Npgsql;
 using System.Transactions;
+using PostService.Model.Sync;
 
 namespace PostService.IntegrationTests
 {
