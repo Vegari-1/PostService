@@ -73,16 +73,18 @@ namespace PostService.Controllers
             counter.Inc();
 
             var posts = await _postService.SearchPostByContent(id, reqeust.Query);
-            var res = await convertPostToResponse(posts);
+            var res = await convertPostToResponse(posts, id);
             return res;
         }
 
         [HttpGet]
         [Route("profile/{profileId}")] 
-        public async Task<PagedList<PostResponse>> FindAllProfilePosts([FromQuery] PaginationParams paginationParams, Guid profileId)
+        public async Task<PagedList<PostResponse>> FindAllProfilePosts(
+            [FromHeader(Name = "profile-id")][Required] Guid id, 
+            [FromQuery] PaginationParams paginationParams, Guid profileId)
         {
             var posts = await _postService.FindAllProfilePosts(paginationParams, profileId);
-            var res = await convertPostToResponse(posts);
+            var res = await convertPostToResponse(posts, id);
             return res;
         }
 
@@ -97,7 +99,7 @@ namespace PostService.Controllers
             counter.Inc();
 
             var posts = await _postService.FindAllFollowed(paginationParams, profileId);
-            var res = await convertPostToResponse(posts);
+            var res = await convertPostToResponse(posts, profileId);
             return res;
         }
 
@@ -142,19 +144,20 @@ namespace PostService.Controllers
             return await _commentService.GetComments(postId);
         }
 
-        public async Task<PagedList<PostResponse>> convertPostToResponse(IReadOnlyList<Post> posts)
+        public async Task<PagedList<PostResponse>> convertPostToResponse(
+            IReadOnlyList<Post> posts, Guid profileId)
         {
             var res = new PagedList<PostResponse>();
             foreach (var post in posts)
             {
                 var profile = await _profileService.GetByIdAsync(post.AuthorId);
-                var response = await CreateResponse(post, profile);
+                var response = await CreateResponse(post, profile, profileId);
                 res.Add(response);
             }
             return res;
         }
 
-        public async Task<PostResponse> CreateResponse(Post post, Model.Sync.Profile profile) {
+        public async Task<PostResponse> CreateResponse(Post post, Model.Sync.Profile profile, Guid profileId) {
             return new PostResponse()
             {
                 Id = post.Id,
@@ -166,8 +169,8 @@ namespace PostService.Controllers
                 Name = profile.Name,
                 Surname = profile.Surname,
                 Avatar = profile.Avatar,
-                Liked = post.Likes.Contains(profile.Id),
-                Disliked = post.Dislikes.Contains(profile.Id),
+                Liked = post.Likes.Contains(profileId),
+                Disliked = post.Dislikes.Contains(profileId),
                 Comments = await MapComments(post.Comments ?? new List<Comment>()),
                 CommentCount = post.Comments.Count(),
                 Pictures = await MapImagesToStringList(post.Images)
