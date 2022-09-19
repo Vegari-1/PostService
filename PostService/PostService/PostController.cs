@@ -24,7 +24,6 @@ namespace PostService.Controllers
 
         Counter counter = Metrics.CreateCounter("post_service_counter", "post counter");
 
-
         public PostController(IPostService postService,
                                 IReactionService reactionService,
                                 ICommentService commentService,
@@ -43,6 +42,11 @@ namespace PostService.Controllers
         [HttpPost]
         public async Task<IActionResult> Save([FromBody] PostRequest request)
         {
+            var actionName = ControllerContext.ActionDescriptor.DisplayName;
+            using var scope = _tracer.BuildSpan(actionName).StartActive(true);
+            scope.Span.Log("create post");
+            counter.Inc();
+
             Post post = new()
             {
                 Content = request.Content,
@@ -57,22 +61,17 @@ namespace PostService.Controllers
             return StatusCode(StatusCodes.Status201Created, post);
         }
 
-        
-        public async Task<PagedList<PostResponse>> FindAll([FromQuery] PaginationParams paginationParams, Guid profileId)
-        {
-            
-            var posts = await _postService.FindAll(paginationParams);
-            var res = await convertPostToResponse(posts);
-            return res;
-        }
-
-
         [HttpGet]
         [Route("search")]
         public async Task<PagedList<PostResponse>> SearchPostByContent(
             [FromHeader(Name = "profile-id")][Required] Guid id, 
             [FromQuery] SearchReqeust reqeust)
         {
+            var actionName = ControllerContext.ActionDescriptor.DisplayName;
+            using var scope = _tracer.BuildSpan(actionName).StartActive(true);
+            scope.Span.Log("search posts feed");
+            counter.Inc();
+
             var posts = await _postService.SearchPostByContent(id, reqeust.Query);
             var res = await convertPostToResponse(posts);
             return res;
@@ -87,11 +86,16 @@ namespace PostService.Controllers
             return res;
         }
 
-        [HttpGet("")]
+        [HttpGet]
         public async Task<PagedList<PostResponse>> FindAlldFollowed(
             [FromQuery] PaginationParams paginationParams,
             [FromHeader(Name = "profile-id")][Required] Guid profileId)
         {
+            var actionName = ControllerContext.ActionDescriptor.DisplayName;
+            using var scope = _tracer.BuildSpan(actionName).StartActive(true);
+            scope.Span.Log("get posts feed");
+            counter.Inc();
+
             var posts = await _postService.FindAllFollowed(paginationParams, profileId);
             var res = await convertPostToResponse(posts);
             return res;
@@ -103,6 +107,11 @@ namespace PostService.Controllers
             [FromHeader(Name = "profile-id")][Required] Guid profileId,
             Guid id)
         {
+            var actionName = ControllerContext.ActionDescriptor.DisplayName;
+            using var scope = _tracer.BuildSpan(actionName).StartActive(true);
+            scope.Span.Log("create post reaction");
+            counter.Inc();
+
             var reaction = await _reactionService.Save(id, profileId, _mapper.Map<Reaction>(request));
             return StatusCode(StatusCodes.Status201Created, reaction);
         }
@@ -113,6 +122,11 @@ namespace PostService.Controllers
             [FromHeader(Name = "profile-id")][Required] Guid profileId,
             Guid id)
         {
+            var actionName = ControllerContext.ActionDescriptor.DisplayName;
+            using var scope = _tracer.BuildSpan(actionName).StartActive(true);
+            scope.Span.Log("create post comment");
+            counter.Inc();
+
             var comment = await _commentService.Save(id, profileId, _mapper.Map<Comment>(request));
             return StatusCode(StatusCodes.Status201Created, comment); ;
         }
@@ -120,6 +134,11 @@ namespace PostService.Controllers
         [HttpGet("{postId}/comment")]
         public async Task<List<Comment>> GetPostComments(Guid postId)
         {
+            var actionName = ControllerContext.ActionDescriptor.DisplayName;
+            using var scope = _tracer.BuildSpan(actionName).StartActive(true);
+            scope.Span.Log("get comments by post id");
+            counter.Inc();
+
             return await _commentService.GetComments(postId);
         }
 
