@@ -8,8 +8,6 @@ namespace PostService.Repository.Interface
 {
     public interface IPostRepository : IRepository<Post>
     {
-        Task<Post> Save(Post post);
-
         Task<IReadOnlyList<Post>> SearchPostByContent(Guid id, string query);
         Task<PagedList<Post>> FindAll(PaginationParams paginationParams);
         Task<PagedList<Post>> FindAllProfilePosts(PaginationParams paginationParams, Guid profileId);

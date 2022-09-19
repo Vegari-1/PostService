@@ -43,13 +43,17 @@ namespace PostService.Controllers
         [HttpPost]
         public async Task<IActionResult> Save([FromBody] PostRequest request)
         {
-            var post = await _postService.Save(new Post()
+            Post post = new()
             {
                 Content = request.Content,
-                TimeStamp = request.TimeStamp,
-                AuthorId = new Guid(request.AuthorId),
-                Images = request.Pictures.Select(x => new Image(x)).ToList()
-            });
+                TimeStamp = DateTime.Now,
+                AuthorId = request.AuthorId,
+            };
+            if (request.Pictures != null && request.Pictures.Count() > 0)
+                post.Images = request.Pictures.Select(x => new Image(x)).ToList();
+
+            post = await _postService.Save(post);
+            
             return StatusCode(StatusCodes.Status201Created, post);
         }
 
@@ -142,6 +146,7 @@ namespace PostService.Controllers
                 Username = profile.Username,
                 Name = profile.Name,
                 Surname = profile.Surname,
+                Avatar = profile.Avatar,
                 Liked = post.Likes.Contains(profile.Id),
                 Disliked = post.Dislikes.Contains(profile.Id),
                 Comments = await MapComments(post.Comments ?? new List<Comment>()),
@@ -161,9 +166,9 @@ namespace PostService.Controllers
                     c.Name?? "",
                     c.Surname,
                     c.Username,
-                    c.Image?.Content,
+                    c.Avatar,
                     c.Content,
-                    c.TimeStamp.Value
+                    c.TimeStamp
                 ))
                 .ToList();
         }

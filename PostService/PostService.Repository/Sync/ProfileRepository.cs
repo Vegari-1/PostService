@@ -1,7 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using PostService.Model.Sync;
 using PostService.Repository.Interface.Sync;
-using PostService.Repository;
 using System.Threading.Tasks;
 using System;
 using System.Linq;

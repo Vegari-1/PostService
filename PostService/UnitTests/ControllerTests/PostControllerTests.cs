@@ -25,7 +25,6 @@ namespace UnitTests.ControllerTests
         private static readonly Guid postId = Guid.NewGuid();
         private static readonly Guid profile1 = Guid.NewGuid();
         private static readonly Guid profile2 = Guid.NewGuid();
-        private static readonly string authorIdString = authorId.ToString();
         private static readonly string content = "test content";
         private static readonly DateTime timeStamp = new DateTime();
         private static readonly int likesNumber = 1;
@@ -117,7 +116,7 @@ namespace UnitTests.ControllerTests
             {
                 Content = content,
                 TimeStamp = timeStamp,
-                AuthorId = authorIdString,
+                AuthorId = authorId,
                 Pictures = new List<string>()
             };
 

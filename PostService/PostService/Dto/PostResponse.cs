@@ -6,6 +6,7 @@
         public string Username { get; set; }
         public string Name { get; set; }
         public string Surname { get; set; }
+        public string Avatar { get; set; }
         public DateTime Timestamp { get; set; }
         public string Content { get; set; }
         public int? Likes { get; set; }

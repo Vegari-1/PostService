@@ -15,17 +15,7 @@ namespace PostService.Model.Sync
 
         public string Username { get; set; }
 
-        public Guid? ImageId { get; set; }
-
-
-        public Profile(Guid id, bool @public, string name, string surname, string username)
-        {
-            Id = id;
-            Public = @public;
-            Name = name;
-            Surname = surname;
-            Username = username;
-        }
+        public string? Avatar { get; set; }
 
         public Profile()
         {
