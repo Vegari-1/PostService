@@ -16,7 +16,8 @@ namespace PostService.Service.Sync
         private readonly IMessageBusService _messageBusService;
         private readonly IProfileRepository _profileRepository;
 
-        public ProfileSyncService(IMessageBusService messageBusService, IProfileRepository profileRepository,
+        public ProfileSyncService(IMessageBusService messageBusService, 
+            IProfileRepository profileRepository,
             ILogger<ProfileSyncService> logger) : base(logger)
         {
             _messageBusService = messageBusService;
@@ -38,8 +39,9 @@ namespace PostService.Service.Sync
                     Name = entity.Name,
                     Surname = entity.Surname,
                     Username = entity.Username,
+                    Avatar = entity.Avatar
                 };
-                profile = _profileRepository.Save(profile);
+                _profileRepository.Save(profile);
             }
             if (action == Events.Updated)
             {
@@ -47,6 +49,7 @@ namespace PostService.Service.Sync
                 dbProfile.Name = entity.Name;
                 dbProfile.Surname = entity.Surname;
                 dbProfile.Username = entity.Username;
+                dbProfile.Avatar = entity.Avatar;
                 _profileRepository.SaveChanges();
             }
             return Task.CompletedTask;

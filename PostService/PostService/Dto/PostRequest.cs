@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace PostService.Dto
+﻿namespace PostService.Dto
 {
     public class PostRequest
     {
@@ -11,7 +6,8 @@ namespace PostService.Dto
 
         public DateTime TimeStamp { get; set; }
 
-        public string AuthorId { get; set; }
+        public Guid AuthorId { get; set; }
+
         public List<string>? Pictures { get; set; }
     }
 }

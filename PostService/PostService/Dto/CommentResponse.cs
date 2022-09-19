@@ -6,9 +6,9 @@
         public string Name { get; set; }
         public string Surname { get; set; }
         public string Username { get; set; }
-        public string Image { get; set; }
+        public string Avatar { get; set; }
         public string Content { get; set; }
-        public DateTime TimeStamp { get; set; }
+        public DateTime Timestamp { get; set; }
 
 
         public CommentResponse(
@@ -24,9 +24,9 @@
             Username = username;
             Name = name;
             Surname = surname;
-            Image = image;
+            Avatar = image;
             Content = content;
-            TimeStamp = timeStamp;
+            Timestamp = timeStamp;
         }
     }
 }

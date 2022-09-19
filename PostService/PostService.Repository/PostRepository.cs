@@ -19,14 +19,6 @@ namespace PostService.Repository
             throw new NotImplementedException();
         }
 
-        public async Task<Post> Save(Post post)
-        {
-            await _context.Posts.AddAsync(post);
-            _context.SaveChanges();
-
-            return post;
-        }
-
         public async Task<PagedList<Post>> FindAll(PaginationParams paginationParams)
         {
             var posts = (from post in _context.Posts
@@ -53,10 +45,7 @@ namespace PostService.Repository
                                             Name = profile.Name,
                                             Surname = profile.Surname,
                                             Username = profile.Username,
-                                            Image = _context.Images
-                                                            .Where(x => x.Id == comment.ImageId)
-                                                            .FirstOrDefault()
-
+                                            Avatar = profile.Avatar
                                         }).ToList()
 
                         });
@@ -86,6 +75,7 @@ namespace PostService.Repository
                                        select image).ToList(),
                              Comments = (from comment in _context.Comments
                                          join profile in _context.Profiles on comment.AuthorId equals profile.Id
+                                         where comment.PostId == post.Id
                                          select new Comment()
                                          {
                                              Id = comment.Id,
@@ -96,10 +86,7 @@ namespace PostService.Repository
                                              Name = profile.Name,
                                              Surname = profile.Surname,
                                              Username = profile.Username,
-                                             Image = _context.Images
-                                                             .Where(x => x.Id == comment.ImageId)
-                                                             .FirstOrDefault()
-
+                                             Avatar = profile.Avatar
                                          }).ToList()
 
                          });
@@ -127,6 +114,7 @@ namespace PostService.Repository
                                       select image).ToList(),
                             Comments = (from comment in _context.Comments
                                         join commentProfile in _context.Profiles on comment.AuthorId equals commentProfile.Id
+                                        where comment.PostId == post.Id
                                         select new Comment()
                                         {
                                             Id = comment.Id,
@@ -137,10 +125,7 @@ namespace PostService.Repository
                                             Name = commentProfile.Name,
                                             Surname = commentProfile.Surname,
                                             Username = commentProfile.Username,
-                                            Image = _context.Images
-                                                            .Where(x => x.Id == comment.ImageId)
-                                                            .FirstOrDefault()
-
+                                            Avatar = commentProfile.Avatar
                                         }).ToList()
 
                         });
@@ -202,10 +187,7 @@ namespace PostService.Repository
                                              Name = profile.Name,
                                              Surname = profile.Surname,
                                              Username = profile.Username,
-                                             Image = _context.Images
-                                                             .Where(x => x.Id == comment.ImageId)
-                                                             .FirstOrDefault()
-
+                                             Avatar = profile.Avatar
                                          }).ToList()
 
                          });

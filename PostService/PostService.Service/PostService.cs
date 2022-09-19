@@ -23,7 +23,7 @@ namespace PostService.Service.Interface
 
         public async Task<Post> Save(Post post)
         {
-            await _postRepository.Save(post);
+            await _postRepository.SaveAsync(post);
             _postSyncService.PublishAsync(post, Events.Created);
             return post;
         }
