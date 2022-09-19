@@ -3,8 +3,6 @@ using PostService.Repository.Interface;
 using PostService.Service;
 using PostService.Service.Interface;
 using Microsoft.EntityFrameworkCore;
-using System;
-using Microsoft.AspNetCore.Builder;
 using OpenTracing;
 using Jaeger.Reporters;
 using Jaeger;
@@ -125,7 +123,6 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
-
 
 app.MapControllers();
 
