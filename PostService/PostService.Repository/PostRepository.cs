@@ -62,13 +62,16 @@ namespace PostService.Repository
         {
             var posts = (from post in _context.Posts
                          where post.AuthorId == profileId
+                         orderby post.TimeStamp descending
                          select new Post()
                          {
                              Id = post.Id,
                              AuthorId = post.AuthorId,
                              Content = post.Content,
                              Likes = post.Likes,
+                             LikesNumber = post.LikesNumber,
                              Dislikes = post.Dislikes,
+                             DislikesNumber = post.DislikesNumber,
                              TimeStamp = post.TimeStamp,
                              Images = (from image in _context.Images
                                        where image.PostId == post.Id
@@ -98,37 +101,40 @@ namespace PostService.Repository
         public async Task<PagedList<Post>> FindAllFollowedByUsername(PaginationParams paginationParams, Guid profileId)
         {
             var connectedProfiles = await GetFollowedProfilesIds(profileId);
-            
+
             var res = (from post in _context.Posts
                        where connectedProfiles.Contains(post.AuthorId)
+                       orderby post.TimeStamp descending
                        select new Post()
-                        {
-                            Id = post.Id,
-                            AuthorId = post.AuthorId,
-                            Content = post.Content,
-                            Likes = post.Likes,
-                            Dislikes = post.Dislikes,
+                       {
+                           Id = post.Id,
+                           AuthorId = post.AuthorId,
+                           Content = post.Content,
+                           Likes = post.Likes,
+                           LikesNumber = post.LikesNumber,
+                           Dislikes = post.Dislikes,
+                           DislikesNumber = post.DislikesNumber,
                             TimeStamp = post.TimeStamp,
-                            Images = (from image in _context.Images
-                                      where image.PostId == post.Id
-                                      select image).ToList(),
-                            Comments = (from comment in _context.Comments
-                                        join commentProfile in _context.Profiles on comment.AuthorId equals commentProfile.Id
-                                        where comment.PostId == post.Id
-                                        select new Comment()
-                                        {
-                                            Id = comment.Id,
-                                            Content = comment.Content,
-                                            AuthorId = comment.AuthorId,
-                                            PostId = comment.PostId,
-                                            TimeStamp = comment.TimeStamp,
-                                            Name = commentProfile.Name,
-                                            Surname = commentProfile.Surname,
-                                            Username = commentProfile.Username,
-                                            Avatar = commentProfile.Avatar
-                                        }).ToList()
+                           Images = (from image in _context.Images
+                                     where image.PostId == post.Id
+                                     select image).ToList(),
+                           Comments = (from comment in _context.Comments
+                                       join commentProfile in _context.Profiles on comment.AuthorId equals commentProfile.Id
+                                       where comment.PostId == post.Id
+                                       select new Comment()
+                                       {
+                                           Id = comment.Id,
+                                           Content = comment.Content,
+                                           AuthorId = comment.AuthorId,
+                                           PostId = comment.PostId,
+                                           TimeStamp = comment.TimeStamp,
+                                           Name = commentProfile.Name,
+                                           Surname = commentProfile.Surname,
+                                           Username = commentProfile.Username,
+                                           Avatar = commentProfile.Avatar
+                                       }).ToList()
 
-                        });
+                       });
 
 
             return PagedList<Post>.ToPagedList(res,
@@ -148,7 +154,7 @@ namespace PostService.Repository
 
             var profile2 = from profile in _context.Profiles
                            join connection in connections on profile.Id equals connection.Profile2
-                           select connection.Profile2;
+                           select connection.Profile1;
 
             var connectedProfiles = profile1.Concat(profile2).Distinct();
 
@@ -164,13 +170,16 @@ namespace PostService.Repository
             var posts =  (from post in _context.Posts
                          where connectedProfiles.Contains(post.AuthorId) && 
                                post.Content.ToLower().Contains(query.ToLower())
+                         orderby post.TimeStamp descending
                          select new Post()
                          {
                              Id = post.Id,
                              AuthorId = post.AuthorId,
                              Content = post.Content,
                              Likes = post.Likes,
+                             LikesNumber = post.LikesNumber,
                              Dislikes = post.Dislikes,
+                             DislikesNumber = post.DislikesNumber,
                              TimeStamp = post.TimeStamp,
                              Images = (from image in _context.Images
                                        where image.PostId == post.Id

@@ -23,10 +23,10 @@ namespace PostService.Repository
                             where post.Id == postId
                             select post).FirstOrDefault();
 
+            reaction.AuthorId = authorId;
+            reaction.PostId = postId;
             if (savedReaction == null)
             {
-                reaction.AuthorId = authorId;
-                reaction.PostId = postId;
                 await _context.Reactions.AddAsync(reaction);
                 if (reaction.Positive)
                 {
